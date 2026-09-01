@@ -1,0 +1,20 @@
+{
+  "name": "ape-firmware-center",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Projects APE Flasher — flash and update APE firmware directly from your browser via USB/Web Serial.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "esptool-js": "^0.6.1"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

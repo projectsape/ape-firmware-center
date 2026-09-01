@@ -1,0 +1,202 @@
+/* Responsive adjustments. */
+
+@media (max-width: 720px) {
+  .device-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mode-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero {
+    padding: 56px 0 48px;
+  }
+
+  .nav {
+    gap: 14px;
+  }
+
+  .nav a {
+    font-size: 13px;
+  }
+
+  .modal {
+    padding: 16px 8px;
+  }
+
+  .modal-body {
+    max-height: calc(100vh - 40px);
+    padding: 16px;
+  }
+
+  .artifact-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .hero-visual {
+    min-height: 280px;
+  }
+
+  .capability-rail {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-heading {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .selection-note {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .help-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .help-grid article {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .container {
+    padding-inline: 18px;
+  }
+
+  .header-inner {
+    height: 64px;
+  }
+
+  .brand-copy small,
+  .nav .nav-source {
+    display: none;
+  }
+
+  .nav {
+    gap: 16px;
+  }
+
+  .hero {
+    padding-top: 54px;
+  }
+
+  .hero-inner {
+    padding-bottom: 56px;
+  }
+
+  .hero-title {
+    font-size: clamp(48px, 14vw, 56px);
+  }
+
+  .hero-tagline {
+    font-size: 15px;
+  }
+
+  .hero-cta {
+    display: grid;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+  }
+
+  .capability-rail > div {
+    min-height: 58px;
+    padding-inline: 12px;
+  }
+
+  .hardware {
+    padding-block: 64px 74px;
+  }
+
+  .section-heading .section-title,
+  .help-section .section-title,
+  .disclaimer .section-title {
+    font-size: 27px;
+  }
+
+  .selection-note {
+    margin-top: -6px;
+    padding: 18px;
+  }
+
+  .help-section {
+    padding-block: 60px 66px;
+  }
+
+  .help-grid h3 {
+    margin-top: 22px;
+  }
+
+  .provenance-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .provenance-row strong {
+    flex-basis: 100%;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+
+  .card-media {
+    padding: 24px 28px;
+  }
+
+  .modal-dialog {
+    max-width: none;
+  }
+
+  .details-media {
+    min-height: 190px;
+    padding: 12px;
+  }
+
+  .modal-img {
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 430px) {
+  .brand-copy strong {
+    font-size: 10px;
+  }
+
+  .nav a {
+    font-size: 9px;
+  }
+
+  .hero-visual {
+    min-height: 200px;
+  }
+
+  .capability-rail strong {
+    font-size: 8px;
+  }
+}

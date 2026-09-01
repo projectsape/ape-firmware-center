@@ -1,0 +1,39 @@
+# Dependencies / build
+node_modules/
+dist/
+.vite/
+
+# Secrets & credentials (NEVER publish)
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+*.crt
+credentials*.json
+*secret*
+
+# Private source / build config (NEVER publish)
+platformio.ini
+sdkconfig*
+**/.pio/
+**/build/
+variants/
+partitions*.csv
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+
+# Local-only scripts (legacy build paths, not for publication)
+scripts/update_local_firmware.py

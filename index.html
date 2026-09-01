@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PROJECTS APE FLASHER</title>
+    <meta
+      name="description"
+      content="Install and update Projects APE firmware for Heltec and Waveshare ESP32-S3 hardware directly from a Web Serial compatible browser."
+    />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PROJECTS APE FLASHER" />
+    <meta property="og:description" content="Install APE firmware from your browser with SHA-256 download integrity checks." />
+    <meta property="og:url" content="https://projectsape.github.io/ape-firmware-center/" />
+    <meta property="og:image" content="https://projectsape.github.io/ape-firmware-center/assets/logo/ape-social-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="./assets/logo/ape-logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./assets/logo/ape-icon.png" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+    <link rel="stylesheet" href="./src/styles/responsive.css" />
+    <link rel="stylesheet" href="./src/styles/ape-theme.css" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Projects APE Flasher home">
+          <img src="./assets/logo/ape-logo.webp" width="1024" height="512" alt="" class="brand-logo" />
+          <span class="brand-copy"><strong>PROJECTS APE</strong><small>FLASHER / USB SERIAL</small></span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="#hardware">Hardware</a>
+          <a href="#help">Help</a>
+          <a class="nav-source" href="https://github.com/projectsape/ape-firmware-center" target="_blank" rel="noopener">Source</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="hero-kicker"><span></span> Browser-based firmware deployment</p>
+            <h1 class="hero-title"><span>PROJECTS APE</span> FLASHER</h1>
+            <p class="hero-tagline">Flash and update APE firmware directly from your browser. No installers. No backend. Hardware stays in your hands.</p>
+            <div class="hero-cta">
+              <button class="btn btn-primary" type="button" data-scroll="#hardware">Choose your device <span aria-hidden="true">↘</span></button>
+              <a class="btn btn-ghost" href="https://github.com/projectsape/ape-firmware-center" target="_blank" rel="noopener">View source</a>
+            </div>
+            <p class="hero-compatibility"><span aria-hidden="true">●</span> Desktop Chrome / Edge · Web Serial · USB data cable required</p>
+            <a class="hero-coffee" href="https://buymeacoffee.com/apeproject" target="_blank" rel="noopener noreferrer">☕ Buy us a coffee</a>
+          </div>
+          <div class="hero-visual" aria-label="Projects APE identity">
+            <span class="frame-corner frame-corner-tl"></span>
+            <span class="frame-corner frame-corner-br"></span>
+            <span class="hero-signal hero-signal-one" aria-hidden="true"></span>
+            <span class="hero-signal hero-signal-two" aria-hidden="true"></span>
+            <img src="./assets/logo/ape-logo.webp" width="1024" height="512" alt="Projects APE logo" class="hero-logo" />
+            <div class="hero-visual-meta"><span>APE / RF SYSTEMS</span><span>EST. 2026</span></div>
+          </div>
+        </div>
+        <div class="container capability-rail" aria-label="Flasher capabilities">
+          <div><span>01</span><strong>NO BACKEND</strong></div>
+          <div><span>02</span><strong>WEB SERIAL</strong></div>
+          <div><span>03</span><strong>SHA-256 CHECKED</strong></div>
+          <div><span>04</span><strong>SUPPORTED TARGETS</strong></div>
+        </div>
+      </section>
+
+      <section id="hardware" class="hardware">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="section-index">01 / HARDWARE</p>
+              <h2 class="section-title">SUPPORTED DEVICES</h2>
+            </div>
+            <p>Select the exact hardware family. T147 uses one shared card, then asks whether you are flashing the LoRa or NoLoRa build.</p>
+          </div>
+          <aside class="selection-note" aria-labelledby="identify-board-title">
+            <div>
+              <p class="selection-note-label">BEFORE YOU SELECT</p>
+              <h3 id="identify-board-title">Identify the board from its printed model or original packaging.</h3>
+            </div>
+            <p>Do not select by appearance alone. The flasher checks the ESP32 family and, when the chip reports it, flash size. It cannot identify the exact board revision or the firmware layout already installed.</p>
+          </aside>
+          <div id="device-grid" class="device-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="help" class="help-section">
+        <div class="container">
+          <p class="section-index">02 / CONNECTION &amp; RECOVERY</p>
+          <h2 class="section-title">IF THE BOARD DOES NOT CONNECT OR BOOT</h2>
+          <div class="help-grid">
+            <article>
+              <span>01</span>
+              <h3>Port not listed</h3>
+              <p>Use desktop Chrome or Edge and a USB data cable. Close other serial tools, reconnect the board and try again. Charge-only cables do not expose a serial port.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Download mode</h3>
+              <p>Follow the board manufacturer's documented bootloader procedure. BOOT/RESET sequences differ between products, so this site does not prescribe one universal sequence.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Interrupted or unbootable</h3>
+              <p>Reconnect the same target and retry. A clean install can recover an incompatible update, but it erases the entire flash, including firmware, settings and stored data.</p>
+            </article>
+          </div>
+          <div class="integrity-note">
+            <strong>What the integrity check means</strong>
+            <p>Every downloaded artifact is SHA-256 checked against this site's catalog before writing. This detects a corrupt or mismatched download; it is not a digital signature and does not independently authenticate the publisher.</p>
+            <a href="https://github.com/projectsape/ape-firmware-center/issues" target="_blank" rel="noopener">Report a problem on GitHub ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="disclaimer" class="disclaimer">
+        <div class="container">
+          <p class="section-index">03 / OPERATOR NOTICE</p>
+          <h2 class="section-title">FLASH WITH INTENT</h2>
+          <p class="disclaimer-text">
+            Experimental firmware and flashing tools provided free of charge and without warranty.
+            Use at your own risk.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">PROJECTS APE FLASHER</div>
+        <div class="footer-links">
+          <a href="#hardware">Hardware</a>
+          <a href="#help">Help</a>
+          <a href="#disclaimer">Safety</a>
+          <a href="https://github.com/projectsape/ape-firmware-center" target="_blank" rel="noopener">Source</a>
+        </div>
+        <p class="footer-note">
+          Experimental firmware and flashing tools provided free of charge and without warranty.
+          Use at your own risk.
+        </p>
+      </div>
+    </footer>
+
+    <div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-dialog">
+        <div id="modal-body" class="modal-body"></div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" hidden role="status"></div>
+  </body>
+</html>
