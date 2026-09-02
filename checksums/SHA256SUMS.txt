@@ -1,4 +1,4 @@
-bd5587981aa0f988f8f541a3b9fe2fb085e610d444cc70d0ce2f5c2ec9cefcad  firmware/heltec-v3/factory/ape-dualboot-heltec-v3-8mb.bin
+703a9587745fe3cd769e8e8296d4f49ea67b7d9ce2718c9e873c9e6fbdf1229f  firmware/heltec-v3/factory/ape-dualboot-heltec-v3-8mb.bin
 2d8874a1eb51a4a5c37f2e39bf6e0e4f64b5ef62f306a5ecec4d84480d9ecf0a  firmware/heltec-v3/update/loader.bin
 9ecaa292d9abaab51f0399ad20c8206e08fa88059a39c279414634935ef44299  firmware/heltec-v3/update/meshcore.bin
 213877c10e761129eb17b3951292a0da261279b6fd32949efce252ea9253de3c  firmware/heltec-v3/update/meshtastic.bin

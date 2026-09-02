@@ -28,7 +28,7 @@
             "name": "factory",
             "file": "firmware/heltec-v3/factory/ape-dualboot-heltec-v3-8mb.bin",
             "offset": "0x0",
-            "sha256": "bd5587981aa0f988f8f541a3b9fe2fb085e610d444cc70d0ce2f5c2ec9cefcad"
+            "sha256": "703a9587745fe3cd769e8e8296d4f49ea67b7d9ce2718c9e873c9e6fbdf1229f"
           }
         ]
       },
