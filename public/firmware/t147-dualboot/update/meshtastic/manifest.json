@@ -1,0 +1,15 @@
+{
+  "schema_version": 3,
+  "version": "2.8.1.f7ad9dc",
+  "app_version": "2.8.1.f7ad9dc",
+  "commit": "18ec962681395a5cbed1ca4beacfb86876ac966b",
+  "health_protocol": 0,
+  "board": "waveshare-esp32-s3-touch-lcd-1.47-lora-dualboot",
+  "component": "meshtastic",
+  "layout": "ape-t147-dualboot-ota-v2",
+  "size": 3764096,
+  "sha256": "abd30fd015aaed5c627814f572912571ed4b42384f351dfd8cfb4058678fdfdf",
+  "firmware_url": "meshtastic-abd30fd015aaed5c.bin",
+  "signature": "MEUCIAINZA0Sa4DWlSDTzsv6RFyqtQqcZ3XgIWGzabUemrIQAiEA7KWDswe/MOVB6dGtUrFjUGFHwFgKSiDVH+qtI3rk5IY=",
+  "notes": "Local OTA test fixture; original app bytes unchanged."
+}

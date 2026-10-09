@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PROJECTS APE FLASHER</title>
+    <meta
+      name="description"
+      content="Install and update Projects APE firmware for Heltec and Waveshare ESP32-S3 hardware directly from a Web Serial compatible browser."
+    />
+    <meta name="theme-color" content="#101214" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PROJECTS APE FLASHER" />
+    <meta property="og:description" content="Install APE firmware from your browser with SHA-256 download integrity checks." />
+    <meta property="og:url" content="https://projectsape.github.io/ape-firmware-center/" />
+    <meta property="og:image" content="https://projectsape.github.io/ape-firmware-center/assets/logo/ape-social-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="./assets/logo/ape-logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./assets/logo/ape-icon.png" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+    <link rel="stylesheet" href="./src/styles/responsive.css" />
+    <link rel="stylesheet" href="./src/styles/ape-theme.css" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#hardware">Skip to devices</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Projects APE Flasher home">
+          <img src="./assets/logo/ape-logo.webp" width="1024" height="512" alt="" class="brand-logo" />
+          <span class="brand-copy"><strong>PROJECTS APE</strong><small>Firmware Studio</small></span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a class="nav-active" href="#hardware">Devices</a>
+          <a href="#help">Support</a>
+          <a class="nav-source" href="https://github.com/projectsape/ape-firmware-center" target="_blank" rel="noopener">GitHub ↗</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="hero-kicker">APE / FIRMWARE STUDIO</p>
+            <h1 class="hero-title">Your hardware.<br /><em>Ready for what's next.</em></h1>
+            <p class="hero-tagline">Install or update APE firmware, straight from your browser.</p>
+          </div>
+          <div class="workflow-guide">
+            <p class="workflow-label">FROM DEVICE TO DEPLOYED</p>
+            <ol class="workflow-steps" aria-label="Installation steps">
+              <li><span>01</span> Device</li>
+              <li><span>02</span> Firmware</li>
+              <li><span>03</span> Install</li>
+            </ol>
+            <p class="hero-compatibility">To flash: desktop Chrome or Edge<br /> and a USB data cable.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="hardware" class="hardware">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <h2 class="section-title">Choose your device<span class="heading-dot" aria-hidden="true">.</span></h2>
+            </div>
+            <p>Select your exact model to explore firmware and install options.</p>
+          </div>
+          <aside class="selection-note" aria-labelledby="identify-board-title">
+            <div>
+              <h3 id="identify-board-title">Check the model printed on your board or packaging.</h3>
+            </div>
+            <p>Appearance alone isn't enough. The flasher checks chip family and reported flash size, but cannot identify your exact board revision or existing firmware layout.</p>
+          </aside>
+          <div id="device-grid" class="device-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="help" class="help-section">
+        <div class="container">
+          <p class="section-index">HERE WHEN YOU NEED IT</p>
+          <h2 class="section-title">A little help getting connected.</h2>
+          <div class="help-grid">
+            <article>
+              <span>01</span>
+              <h3>Port not listed</h3>
+              <p>Use desktop Chrome or Edge and a USB data cable. Close other serial tools, reconnect the board and try again. Charge-only cables do not expose a serial port.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Download mode</h3>
+              <p>Follow the board manufacturer's documented bootloader procedure. BOOT/RESET sequences differ between products, so this site does not prescribe one universal sequence.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Interrupted or unbootable</h3>
+              <p>Reconnect the same target and retry. A clean install can recover an incompatible update, but it erases the entire flash, including firmware, settings and stored data.</p>
+            </article>
+          </div>
+          <div class="integrity-note">
+            <strong>What the integrity check means</strong>
+            <p>Every downloaded artifact is SHA-256 checked against this site's catalog before writing. This detects a corrupt or mismatched download; it is not a digital signature and does not independently authenticate the publisher.</p>
+            <a href="https://github.com/projectsape/ape-firmware-center/issues" target="_blank" rel="noopener">Report a problem on GitHub ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="disclaimer" class="disclaimer">
+        <div class="container">
+          <p class="section-index">BEFORE YOU FLASH</p>
+          <h2 class="section-title">Your device. Your decision.</h2>
+          <p class="disclaimer-text">
+            Experimental firmware and flashing tools provided free of charge and without warranty.
+            Use at your own risk.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">PROJECTS APE FLASHER</div>
+        <div class="footer-links">
+          <a href="#hardware">Hardware</a>
+          <a href="#help">Help</a>
+          <a href="#disclaimer">Safety</a>
+          <a href="https://github.com/projectsape/ape-firmware-center" target="_blank" rel="noopener">Source</a>
+          <a href="https://buymeacoffee.com/apeproject" target="_blank" rel="noopener noreferrer">Buy us a coffee ↗</a>
+        </div>
+        <p class="footer-note">
+          Experimental firmware and flashing tools provided free of charge and without warranty.
+          Use at your own risk.
+        </p>
+      </div>
+    </footer>
+
+    <div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-dialog">
+        <div id="modal-body" class="modal-body"></div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" hidden role="status"></div>
+  </body>
+</html>

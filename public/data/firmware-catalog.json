@@ -1,0 +1,355 @@
+{
+ "schemaVersion": 1,
+ "generatedAt": "2026-10-09",
+ "devices": [
+  {
+   "id": "heltec-v3",
+   "manufacturer": "Heltec",
+   "model": "V3",
+   "firmware": "APE DualBoot",
+   "chipFamily": "ESP32-S3",
+   "flashSize": "8MB",
+   "version": "2.8.1",
+   "channel": "stable",
+   "releaseDate": "2026-09-23",
+   "image": "assets/boards/heltec-v3.webp",
+   "requiresExternalRadio": false,
+   "wiring": null,
+   "loader": {
+    "file": "firmware/heltec-v3/update/loader.bin",
+    "offset": "0x20000",
+    "sha256": "3ba56a44e1d78c790f3850a4f99f82987fcec5789a68bc4e357b7353790b9bf4",
+    "note": "Not flashed by default. Included in an update only when a release marks loaderChanged."
+   },
+   "factory": {
+    "eraseAll": true,
+    "parts": [
+     {
+      "name": "factory",
+      "file": "firmware/heltec-v3/factory/ape-dualboot-heltec-v3-8mb.bin",
+      "offset": "0x0",
+      "sha256": "2392558ac66d137ed606f9208f07beb4166e525c59b06f137a1a3374671ddeaa"
+     }
+    ]
+   },
+   "update": {
+    "eraseAll": false,
+    "parts": [
+     {
+      "name": "meshcore",
+      "file": "firmware/heltec-v3/update/meshcore.bin",
+      "offset": "0xA0000",
+      "sha256": "1500bfff38db8d37fbedd4fb096560c1b864710a349fc204356eb5c6cd348d68"
+     },
+     {
+      "name": "meshtastic",
+      "file": "firmware/heltec-v3/update/meshtastic.bin",
+      "offset": "0x300000",
+      "sha256": "243cc0b88a6eaf6730ed481812e04ffe2fd571f182e4a9ed09340e1e3d5e9702"
+     }
+    ],
+    "loaderChanged": false
+   },
+   "meshcoreVersion": "1.17.1",
+   "loaderVersion": "1.0.0",
+   "provenance": {
+    "meshtastic": {
+     "version": "2.8.1",
+     "source": "https://github.com/meshtastic/firmware",
+     "commit": "7c80205"
+    },
+    "meshcore": {
+     "version": "1.17.1",
+     "source": "https://github.com/meshcore-dev/MeshCore",
+     "commit": "14b9f252"
+    },
+    "loader": {
+     "version": "1.0.0",
+     "source": null,
+     "commit": null
+    }
+   }
+  },
+  {
+   "id": "heltec-v4",
+   "manufacturer": "Heltec",
+   "model": "V4",
+   "variant": "R2 \u2014 not compatible with Heltec V4 R8",
+   "firmware": "APE DualBoot",
+   "chipFamily": "ESP32-S3",
+   "flashSize": "16MB",
+   "psramSize": "2MB QUAD/QSPI",
+   "version": "2.8.1",
+   "channel": "stable",
+   "releaseDate": "2026-09-23",
+   "image": "assets/boards/heltec-v4.webp",
+   "requiresExternalRadio": false,
+   "wiring": null,
+   "loader": {
+    "file": "firmware/heltec-v4/update/loader.bin",
+    "offset": "0x20000",
+    "sha256": "f6532f05a2a4842cce2f8a5bc137b70537a92b744b67226a3e6cec48703f4f7c",
+    "note": "Not flashed by default. Included in an update only when a release marks loaderChanged."
+   },
+   "factory": {
+    "eraseAll": true,
+    "parts": [
+     {
+      "name": "factory",
+      "file": "firmware/heltec-v4/factory/ape-dualboot-heltec-v4-16mb.bin",
+      "offset": "0x0",
+      "sha256": "fbdf23d0fd579ef127c7dc9ffa039fe08debe6f8236dfe65ab4fd3c499b4e3a7"
+     }
+    ]
+   },
+   "update": {
+    "eraseAll": false,
+    "parts": [
+     {
+      "name": "meshcore",
+      "file": "firmware/heltec-v4/update/meshcore.bin",
+      "offset": "0xA0000",
+      "sha256": "d38fc5586e7c7dd2941ffd927ab2d2f0f339fdb81481288a332c9e846e13c991"
+     },
+     {
+      "name": "meshtastic",
+      "file": "firmware/heltec-v4/update/meshtastic.bin",
+      "offset": "0x3A0000",
+      "sha256": "25a29dc78413752535a4a04b7416fcb6835a31b3b189181aba3a487c7452317c"
+     }
+    ],
+    "loaderChanged": false
+   },
+   "meshcoreVersion": "1.17.1",
+   "loaderVersion": "1.0.0",
+   "provenance": {
+    "meshtastic": {
+     "version": "2.8.1",
+     "source": "https://github.com/meshtastic/firmware",
+     "commit": "a10ad43f"
+    },
+    "meshcore": {
+     "version": "1.17.1",
+     "source": "https://github.com/meshcore-dev/MeshCore",
+     "commit": "ca7de9ec"
+    },
+    "loader": {
+     "version": "1.0.0",
+     "source": null,
+     "commit": null
+    }
+   }
+  },
+  {
+   "id": "t147-lora-dualboot",
+   "hardwareGroup": "t147",
+   "hardwareGroupLabel": "APE T147",
+   "variantKey": "lora",
+   "variantLabel": "LoRa DualBoot",
+   "manufacturer": "Waveshare",
+   "model": "ESP32-S3-Touch-LCD-1.47",
+   "displayName": "APE T147 LoRa DualBoot",
+   "productUrl": "https://www.waveshare.com/esp32-s3-touch-lcd-1.47.htm",
+   "variant": "External SX1262 \u2014 WadaMesh / Meshtastic DualBoot with Wi-Fi OTA",
+   "firmware": "WadaMesh + Meshtastic + OTA",
+   "chipFamily": "ESP32-S3",
+   "chipModel": "ESP32-S3R8",
+   "flashSize": "16MB",
+   "psramSize": "8MB",
+   "display": "1.47-inch 172\u00d7320 capacitive touch LCD",
+   "version": "2.8.1.f7ad9dc",
+   "channel": "candidate",
+   "releaseDate": "2026-10-09",
+   "image": "assets/boards/t147.webp",
+   "requiresExternalRadio": true,
+   "wiring": {
+    "title": "Wio / XIAO SX1262 \u2192 Waveshare T147",
+    "pins": [
+     {
+      "from": "3V3",
+      "to": "3V3"
+     },
+     {
+      "from": "GND",
+      "to": "GND"
+     },
+     {
+      "from": "SCK",
+      "to": "GPIO 9"
+     },
+     {
+      "from": "MISO",
+      "to": "GPIO 10"
+     },
+     {
+      "from": "MOSI",
+      "to": "GPIO 11"
+     },
+     {
+      "from": "NSS / CS",
+      "to": "GPIO 7"
+     },
+     {
+      "from": "RST",
+      "to": "GPIO 2"
+     },
+     {
+      "from": "BUSY",
+      "to": "GPIO 4"
+     },
+     {
+      "from": "RF_SW",
+      "to": "NC (not connected)"
+     },
+     {
+      "from": "DIO1",
+      "to": "GPIO 1"
+     }
+    ],
+    "note": "External Wio / XIAO SX1262 required. RF switching is internal to the SX1262 and driven by DIO2, so leave RF_SW unconnected; DIO2 and DIO3 need no external wiring. Verify all connections before powering or flashing the device.",
+    "antennaWarning": "Connect a suitable antenna before intentionally transmitting with the SX1262."
+   },
+   "loader": {
+    "file": "firmware/t147-dualboot/update/loader-3b44fb49fe56adf2.bin",
+    "offset": "0x20000",
+    "sha256": "3b44fb49fe56adf2e237ce232eb261dd1a5988d970ff8c9a7e26bd6a04051e61",
+    "note": "Not flashed by default. Included in an update only when a release marks loaderChanged."
+   },
+   "factory": {
+    "eraseAll": true,
+    "parts": [
+     {
+      "file": "firmware/t147-dualboot/factory/APE-T147-LoRa-DualBoot-OTA-20261009-afd00ab3ead3b41b.factory.bin",
+      "sha256": "afd00ab3ead3b41b282bf45bfa4cb839917fc69537637d847a8a5ee2c0a4f036",
+      "name": "factory",
+      "offset": "0x0"
+     }
+    ]
+   },
+   "update": {
+    "eraseAll": false,
+    "requireVerifiedFlashSize": true,
+    "requiredLayout": {
+     "id": "ape-t147-dualboot-ota-v2",
+     "file": "firmware/t147-dualboot/update/partitions-ota-v2.bin",
+     "sha256": "c7e60fcb1a19ecb84df674a908c8e48744e3f5fb8a81fa19fb4f341b07db4cfa",
+     "offset": "0x8000",
+     "size": 4096
+    },
+    "parts": [
+     {
+      "name": "wadamesh",
+      "file": "firmware/t147-dualboot/update/wadamesh/wadamesh-08e625cdbfddc46a.bin",
+      "sha256": "08e625cdbfddc46a1f309f8e62e7a1c776f84ae462afe85841c32e2235dce841",
+      "offset": "0x1a0000"
+     },
+     {
+      "name": "meshtastic",
+      "file": "firmware/t147-dualboot/update/meshtastic/meshtastic-abd30fd015aaed5c.bin",
+      "sha256": "abd30fd015aaed5c627814f572912571ed4b42384f351dfd8cfb4058678fdfdf",
+      "offset": "0x520000"
+     }
+    ],
+    "loaderChanged": false
+   },
+   "provenance": {
+    "wadamesh": {
+     "version": "v1.17.4-touch",
+     "commit": "39f342c67e0feaca47ac4302c7d4bda5f399c36d",
+     "source": "https://github.com/ALLFATHER-BV/wadamesh"
+    },
+    "meshtastic": {
+     "version": "2.8.1.f7ad9dc",
+     "commit": "18ec962681395a5cbed1ca4beacfb86876ac966b",
+     "source": "https://github.com/meshtastic/firmware"
+    },
+    "loader": {
+     "version": "Legacy-20261007",
+     "commit": null,
+     "source": null,
+     "sourceState": "local-uncommitted"
+    }
+   },
+   "wadameshVersion": "v1.17.4-touch",
+   "loaderVersion": "Legacy-20261007",
+   "ota": {
+    "feedUrl": "https://projectsape.github.io/ape-firmware-center/firmware/t147-dualboot/update",
+    "board": "waveshare-esp32-s3-touch-lcd-1.47-lora-dualboot",
+    "layout": "ape-t147-dualboot-ota-v2",
+    "publicKey": "firmware/t147-dualboot/ota-public-key.pem",
+    "releaseFile": "firmware/t147-dualboot/release.json",
+    "components": {
+     "wadamesh": {
+      "manifest": "firmware/t147-dualboot/update/wadamesh/manifest.json",
+      "offset": "0x1a0000",
+      "slotSize": "0x380000"
+     },
+     "meshtastic": {
+      "manifest": "firmware/t147-dualboot/update/meshtastic/manifest.json",
+      "offset": "0x520000",
+      "slotSize": "0x400000"
+     }
+    }
+   }
+  },
+  {
+   "id": "t147-nolora",
+   "hardwareGroup": "t147",
+   "hardwareGroupLabel": "APE T147",
+   "variantKey": "nolora",
+   "variantLabel": "NoLoRa",
+   "manufacturer": "Waveshare",
+   "model": "ESP32-S3-Touch-LCD-1.47",
+   "displayName": "APE T147 NoLoRa",
+   "productUrl": "https://www.waveshare.com/esp32-s3-touch-lcd-1.47.htm",
+   "variant": "No LoRa radio \u2014 display, Wi-Fi and Bluetooth only",
+   "firmware": "Meshtastic (No-LoRa)",
+   "chipFamily": "ESP32-S3",
+   "chipModel": "ESP32-S3R8",
+   "flashSize": "16MB",
+   "psramSize": "8MB",
+   "display": "1.47-inch 172\u00d7320 capacitive touch LCD",
+   "version": "2.8.1",
+   "channel": "stable",
+   "releaseDate": "2026-09-23",
+   "image": "assets/boards/t147.webp",
+   "requiresExternalRadio": false,
+   "wiring": null,
+   "factory": {
+    "eraseAll": true,
+    "parts": [
+     {
+      "name": "factory",
+      "file": "firmware/t147-nolora/factory/T147-NoLoRa.factory.bin",
+      "offset": "0x0",
+      "sha256": "b163c5cd19ed07d689835f511465858e04b5c83c622d96d6f45dfc143aab2151"
+     },
+     {
+      "name": "littlefs",
+      "file": "firmware/t147-nolora/factory/T147-NoLoRa.littlefs.bin",
+      "offset": "0xC90000",
+      "sha256": "2025b200ef42e636a5258f8db9f734a855dfb91a8a36c3c2bbdc5ea2f0ce92c6"
+     }
+    ]
+   },
+   "update": {
+    "eraseAll": false,
+    "parts": [
+     {
+      "name": "meshtastic",
+      "file": "firmware/t147-nolora/update/T147-NoLoRa.meshtastic.bin",
+      "offset": "0x10000",
+      "sha256": "4634529315f5e666409cc0c88d7092f5ac863fc6190a71bbbbc7c6772be6683a"
+     }
+    ]
+   },
+   "provenance": {
+    "meshtastic": {
+     "version": "2.8.1",
+     "source": "https://github.com/meshtastic/firmware",
+     "commit": "181b184f"
+    }
+   }
+  }
+ ]
+}
