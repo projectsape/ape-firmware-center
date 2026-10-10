@@ -11,8 +11,8 @@ install identical bytes:
   `019b1a7be443b828b91931b09fd56d462e30ad61104e23c72b715752778f6f70`
 - Meshtastic `2.8.1.2a8d5a2` — 2,298,880 bytes, SHA256
   `4bb042f4bac160a8d9d9679644c5b81a8b7b16bd997e22f9f223f389c52664b0`
-- Loader `UIv4-20261010` — 1,026,768 bytes, SHA256
-  `d9208b6f245a435073e72301468b541ff1eac3a8bc6db6dca26ddc0e36bb22a5`
+- Loader `UIv4-20261010` — 1,026,752 bytes, SHA256
+  `e0397ea82bb60c8f02e8a7f5a60f62431986a410225af231215d9ab25d9c5e63`
 
 This webflasher distributes compiled firmware and operational metadata, not
 firmware source packages.
@@ -62,9 +62,9 @@ cached approval survives a changed connection or plan.
 
 ## Artifacts
 
-- `firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-b3377c0b33db4433.factory.bin`
-  — 16 MiB, SHA256 `b3377c0b33db4433b909dfc2b553ca953fe4710452cd6da99c705ce4319c0a0e`
-- `firmware/heltec-v4/update/loader-d9208b6f245a4350.bin`
+- `firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-9504a34179098834.factory.bin`
+  — 16 MiB, SHA256 `9504a34179098834a7f490af410cf47261335b3d3a9996aae8a5460bb2d0c917`
+- `firmware/heltec-v4/update/loader-e0397ea82bb60c8f.bin`
 - `firmware/heltec-v4/update/partitions-ota-v1.bin`
 - `firmware/heltec-v4/update/meshcore/{manifest.json,meshcore-019b1a7be443b828.bin}`
 - `firmware/heltec-v4/update/meshtastic/{manifest.json,meshtastic-4bb042f4bac160a8.bin}`
