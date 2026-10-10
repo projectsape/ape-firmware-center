@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "board": "heltec-v4-dualboot",
+  "layout": "ape-heltec-v4-dualboot-ota-v1",
+  "feedUrl": "https://projectsape.github.io/ape-firmware-center/firmware/heltec-v4/update",
+  "loader": {
+    "file": "firmware/heltec-v4/update/loader-d9208b6f245a4350.bin",
+    "bytes": 1026768,
+    "sha256": "d9208b6f245a435073e72301468b541ff1eac3a8bc6db6dca26ddc0e36bb22a5",
+    "version": "UIv4-20261010",
+    "offset": "0x20000",
+    "slotSize": "0x180000",
+    "bench": false,
+    "sourceState": "local-uncommitted",
+    "baseline": "ui-v4",
+    "acceptedOn": "2026-10-10"
+  },
+  "factory": {
+    "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-b3377c0b33db4433.factory.bin",
+    "bytes": 16777216,
+    "sha256": "b3377c0b33db4433b909dfc2b553ca953fe4710452cd6da99c705ce4319c0a0e"
+  },
+  "partitionTable": {
+    "file": "firmware/heltec-v4/update/partitions-ota-v1.bin",
+    "bytes": 4096,
+    "sha256": "23353614a32bd5d4213e986be966c09076ba94232b740097d2f9089f89779ba1",
+    "offset": "0x8000"
+  },
+  "publicKey": {
+    "file": "firmware/heltec-v4/ota-public-key.pem",
+    "bytes": 178,
+    "sha256": "3a791f1fa9b45716b8cc8b12e258a0f3e4abbfdd1cb0b007e3d3042518d3c377",
+    "testKeySha256": "67f66437c0e54cab0723cdca91f40f010aceaa9311160b0d3bfc4a6ef244f4f9"
+  },
+  "components": {
+    "meshcore": {
+      "file": "firmware/heltec-v4/update/meshcore/meshcore-019b1a7be443b828.bin",
+      "bytes": 1271264,
+      "sha256": "019b1a7be443b828b91931b09fd56d462e30ad61104e23c72b715752778f6f70",
+      "manifest": "firmware/heltec-v4/update/meshcore/manifest.json",
+      "version": "v1.17.1",
+      "commit": "e94125987ed87497e706a0b54d1e80c709343980",
+      "offset": "0x1a0000",
+      "slotSize": "0x200000",
+      "espAppVersion": "esp-idf: v4.4.7 38eeba213a"
+    },
+    "meshtastic": {
+      "file": "firmware/heltec-v4/update/meshtastic/meshtastic-4bb042f4bac160a8.bin",
+      "bytes": 2298880,
+      "sha256": "4bb042f4bac160a8d9d9679644c5b81a8b7b16bd997e22f9f223f389c52664b0",
+      "manifest": "firmware/heltec-v4/update/meshtastic/manifest.json",
+      "version": "2.8.1.2a8d5a2",
+      "commit": "cb4efd8f4188303b09795969174d63441633490c",
+      "offset": "0x3a0000",
+      "slotSize": "0x300000",
+      "espAppVersion": "v2.7.23.b246bcd-1090-g2a8d5a245"
+    }
+  },
+  "approval": "owner-authorized-heltec-v4-dualboot-ota-publication-20261010;owner-authorized-v4-loader-usb-identity-20261010;owner-authorized-v4-usb-layout-guard-20261010"
+}

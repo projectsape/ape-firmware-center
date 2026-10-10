@@ -1,0 +1,15 @@
+{
+  "schema_version": 3,
+  "version": "v1.17.1",
+  "app_version": "v1.17.1",
+  "commit": "e94125987ed87497e706a0b54d1e80c709343980",
+  "health_protocol": 0,
+  "board": "heltec-v4-dualboot",
+  "component": "meshcore",
+  "layout": "ape-heltec-v4-dualboot-ota-v1",
+  "size": 1271264,
+  "sha256": "019b1a7be443b828b91931b09fd56d462e30ad61104e23c72b715752778f6f70",
+  "firmware_url": "meshcore-019b1a7be443b828.bin",
+  "notes": "USB=OTA; dualboot layout v1; same bytes as factory and USB.",
+  "signature": "MEQCIChOpWJNk9ake3pJmFhNaSaYH20WZUP5JkBUKHfNJQ68AiBXTVoBZhS3F5LSw3Ppcc/GoLlfQxyHQhfu/LNZ/ntkOA=="
+}

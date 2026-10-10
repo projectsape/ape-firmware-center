@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-09",
+ "generatedAt": "2026-10-10",
  "devices": [
   {
    "id": "heltec-v3",
@@ -79,16 +79,16 @@
    "chipFamily": "ESP32-S3",
    "flashSize": "16MB",
    "psramSize": "2MB QUAD/QSPI",
-   "version": "2.8.1",
-   "channel": "stable",
-   "releaseDate": "2026-09-23",
+   "version": "2.8.1.2a8d5a2",
+   "channel": "candidate",
+   "releaseDate": "2026-10-10",
    "image": "assets/boards/heltec-v4.webp",
    "requiresExternalRadio": false,
    "wiring": null,
    "loader": {
-    "file": "firmware/heltec-v4/update/loader.bin",
+    "file": "firmware/heltec-v4/update/loader-d9208b6f245a4350.bin",
     "offset": "0x20000",
-    "sha256": "f6532f05a2a4842cce2f8a5bc137b70537a92b744b67226a3e6cec48703f4f7c",
+    "sha256": "d9208b6f245a435073e72301468b541ff1eac3a8bc6db6dca26ddc0e36bb22a5",
     "note": "Not flashed by default. Included in an update only when a release marks loaderChanged."
    },
    "factory": {
@@ -96,47 +96,75 @@
     "parts": [
      {
       "name": "factory",
-      "file": "firmware/heltec-v4/factory/ape-dualboot-heltec-v4-16mb.bin",
+      "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-b3377c0b33db4433.factory.bin",
       "offset": "0x0",
-      "sha256": "fbdf23d0fd579ef127c7dc9ffa039fe08debe6f8236dfe65ab4fd3c499b4e3a7"
+      "sha256": "b3377c0b33db4433b909dfc2b553ca953fe4710452cd6da99c705ce4319c0a0e"
      }
     ]
    },
    "update": {
     "eraseAll": false,
+    "requireVerifiedFlashSize": true,
+    "requiredLayout": {
+     "id": "ape-heltec-v4-dualboot-ota-v1",
+     "file": "firmware/heltec-v4/update/partitions-ota-v1.bin",
+     "sha256": "23353614a32bd5d4213e986be966c09076ba94232b740097d2f9089f89779ba1",
+     "offset": "0x8000",
+     "size": 4096
+    },
     "parts": [
      {
       "name": "meshcore",
-      "file": "firmware/heltec-v4/update/meshcore.bin",
-      "offset": "0xA0000",
-      "sha256": "d38fc5586e7c7dd2941ffd927ab2d2f0f339fdb81481288a332c9e846e13c991"
+      "file": "firmware/heltec-v4/update/meshcore/meshcore-019b1a7be443b828.bin",
+      "sha256": "019b1a7be443b828b91931b09fd56d462e30ad61104e23c72b715752778f6f70",
+      "offset": "0x1a0000"
      },
      {
       "name": "meshtastic",
-      "file": "firmware/heltec-v4/update/meshtastic.bin",
-      "offset": "0x3A0000",
-      "sha256": "25a29dc78413752535a4a04b7416fcb6835a31b3b189181aba3a487c7452317c"
+      "file": "firmware/heltec-v4/update/meshtastic/meshtastic-4bb042f4bac160a8.bin",
+      "sha256": "4bb042f4bac160a8d9d9679644c5b81a8b7b16bd997e22f9f223f389c52664b0",
+      "offset": "0x3a0000"
      }
     ],
-    "loaderChanged": false
+    "loaderChanged": true
    },
-   "meshcoreVersion": "1.17.1",
-   "loaderVersion": "1.0.0",
+   "meshcoreVersion": "v1.17.1",
+   "loaderVersion": "UIv4-20261010",
    "provenance": {
-    "meshtastic": {
-     "version": "2.8.1",
-     "source": "https://github.com/meshtastic/firmware",
-     "commit": "a10ad43f"
-    },
     "meshcore": {
-     "version": "1.17.1",
-     "source": "https://github.com/meshcore-dev/MeshCore",
-     "commit": "ca7de9ec"
+     "version": "v1.17.1",
+     "commit": "e94125987ed87497e706a0b54d1e80c709343980",
+     "source": "https://github.com/meshcore-dev/MeshCore"
+    },
+    "meshtastic": {
+     "version": "2.8.1.2a8d5a2",
+     "commit": "cb4efd8f4188303b09795969174d63441633490c",
+     "source": "https://github.com/meshtastic/firmware"
     },
     "loader": {
-     "version": "1.0.0",
+     "version": "UIv4-20261010",
+     "commit": null,
      "source": null,
-     "commit": null
+     "sourceState": "local-uncommitted"
+    }
+   },
+   "ota": {
+    "feedUrl": "https://projectsape.github.io/ape-firmware-center/firmware/heltec-v4/update",
+    "board": "heltec-v4-dualboot",
+    "layout": "ape-heltec-v4-dualboot-ota-v1",
+    "publicKey": "firmware/heltec-v4/ota-public-key.pem",
+    "releaseFile": "firmware/heltec-v4/release.json",
+    "components": {
+     "meshcore": {
+      "manifest": "firmware/heltec-v4/update/meshcore/manifest.json",
+      "offset": "0x1a0000",
+      "slotSize": "0x200000"
+     },
+     "meshtastic": {
+      "manifest": "firmware/heltec-v4/update/meshtastic/manifest.json",
+      "offset": "0x3a0000",
+      "slotSize": "0x300000"
+     }
     }
    }
   },

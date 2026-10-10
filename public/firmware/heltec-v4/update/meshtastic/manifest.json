@@ -1,0 +1,15 @@
+{
+  "schema_version": 3,
+  "version": "2.8.1.2a8d5a2",
+  "app_version": "2.8.1.2a8d5a2",
+  "commit": "cb4efd8f4188303b09795969174d63441633490c",
+  "health_protocol": 0,
+  "board": "heltec-v4-dualboot",
+  "component": "meshtastic",
+  "layout": "ape-heltec-v4-dualboot-ota-v1",
+  "size": 2298880,
+  "sha256": "4bb042f4bac160a8d9d9679644c5b81a8b7b16bd997e22f9f223f389c52664b0",
+  "firmware_url": "meshtastic-4bb042f4bac160a8.bin",
+  "notes": "USB=OTA; dualboot layout v1; same bytes as factory and USB.",
+  "signature": "MEUCIDURfrLhbqcdRPfaanhuDRPliAcCRmjYnR4fmpGpJmjoAiEAgJFDjbvLQzggs2WgqSVvDrWorJT9Stak/EcrOPUN+K0="
+}

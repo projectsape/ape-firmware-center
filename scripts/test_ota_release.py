@@ -189,5 +189,119 @@ class ReleaseRejections(unittest.TestCase):
         self.reject()
 
 
+class V4ReleaseRejections(unittest.TestCase):
+    """Same tamper gates applied to the Heltec V4 DualBoot signed feed."""
+
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory()
+        self.public = Path(self.directory.name) / 'public'
+        shutil.copytree(v.ROOT / 'public/firmware/heltec-v4', self.public / 'firmware/heltec-v4')
+        self.catalog = v.load_json(v.ROOT / 'public/data/firmware-catalog.json')
+        self.device = next(x for x in self.catalog['devices'] if x['id'] == 'heltec-v4')
+        self.release_path = self.public / self.device['ota']['releaseFile']
+        self.release = v.load_json(self.release_path)
+        self.manifest_path = self.public / self.release['components']['meshcore']['manifest']
+        self.manifest = v.load_json(self.manifest_path)
+
+    def tearDown(self):
+        self.directory.cleanup()
+
+    def save_manifest(self):
+        self.manifest_path.write_text(json.dumps(self.manifest))
+
+    def save_release(self):
+        self.release_path.write_text(json.dumps(self.release))
+
+    def reject(self):
+        with self.assertRaises((ValueError, KeyError, TypeError)):
+            v.validate_v4(self.public, self.catalog)
+
+    def test_actual_release_passes(self):
+        self.assertTrue(v.validate_v4(self.public, self.catalog))
+
+    def test_bad_signature(self):
+        signature = bytearray(base64.b64decode(self.manifest['signature']))
+        signature[-1] ^= 1
+        self.manifest['signature'] = base64.b64encode(signature).decode()
+        self.save_manifest()
+        self.reject()
+
+    def test_altered_signed_commit(self):
+        self.manifest['commit'] = '0' * 40
+        self.save_manifest()
+        self.reject()
+
+    def test_altered_signed_version(self):
+        self.manifest['version'] = 'v1.17.2'
+        self.manifest['app_version'] = 'v1.17.2'
+        self.save_manifest()
+        self.reject()
+
+    def test_test_marked_version(self):
+        self.manifest['version'] = 'v1.17.1-TEST'
+        self.manifest['app_version'] = 'v1.17.1-TEST'
+        self.save_manifest()
+        self.reject()
+
+    def test_tampered_app_bytes(self):
+        path = self.public / self.release['components']['meshcore']['file']
+        data = bytearray(path.read_bytes())
+        data[48] ^= 1
+        path.write_bytes(data)
+        self.reject()
+
+    def test_tampered_factory_loader(self):
+        path = self.public / self.release['factory']['file']
+        data = bytearray(path.read_bytes())
+        data[0x20000 + 48] ^= 1
+        path.write_bytes(data)
+        self.reject()
+
+    def test_manifest_path_mismatch(self):
+        self.manifest['firmware_url'] = 'meshcore-0000000000000000.bin'
+        self.save_manifest()
+        self.reject()
+
+    def test_legacy_meshcore_offset(self):
+        next(p for p in self.device['update']['parts'] if p['name'] == 'meshcore')['offset'] = '0xA0000'
+        self.reject()
+
+    def test_wrong_slot_size(self):
+        self.device['ota']['components']['meshtastic']['slotSize'] = '0x400000'
+        self.reject()
+
+    def test_guard_removed(self):
+        del self.device['update']['requiredLayout']
+        self.reject()
+
+    def test_unknown_flash_allowed(self):
+        self.device['update']['requireVerifiedFlashSize'] = False
+        self.reject()
+
+    def test_loader_offset(self):
+        self.device['loader']['offset'] = '0x10000'
+        self.reject()
+
+    def test_usb_loader_changed_requires_metadata(self):
+        self.device['update']['loaderChanged'] = True
+        del self.device['loader']
+        self.reject()
+
+    def test_bench_release(self):
+        self.release['loader']['bench'] = True
+        self.save_release()
+        self.reject()
+
+    def test_test_key_metadata(self):
+        self.release['publicKey']['testKeySha256'] = self.release['publicKey']['sha256']
+        self.save_release()
+        self.reject()
+
+    def test_source_artifact_entries(self):
+        self.release['sourceArtifacts'] = {'loader': {'file': 'firmware/private.tar.gz', 'bytes': 1, 'sha256': '0' * 64}}
+        self.save_release()
+        self.reject()
+
+
 if __name__ == '__main__':
     unittest.main()
