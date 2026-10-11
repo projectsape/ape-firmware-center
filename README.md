@@ -1,61 +1,64 @@
 # Projects APE Flasher
 
-Flash and update **APE firmware** directly from your browser via **USB / Web Serial**.
+Browser-based flasher and update site for Projects APE firmware on ESP32-S3 boards.
+Everything runs locally in the browser through the Web Serial API — firmware,
+catalog and flash logs never leave your computer. Built on
+[esptool-js](https://github.com/espressif/esptool-js).
 
-A public, static web application — no backend, no accounts, no tracking. The
-flasher is built on [esptool-js](https://github.com/espressif/esptool-js). Web
-flashing requires a desktop browser that exposes Web Serial (current Chrome or
-Edge) and a USB data cable.
+**Live site:** https://projectsape.github.io/ape-firmware-center/
 
-This repository is a webflasher, not a firmware build archive. Public firmware
-delivery contains compiled binaries and required catalog/OTA metadata. Firmware
-source trees, source packages and private build evidence stay outside this repo.
-
-Every firmware artifact is SHA-256 checked against the catalog before a flash
-write begins. This is a download-integrity check, not a digital signature or an
-independent authentication of the publisher.
-
-## Supported hardware
+## Supported devices
 
 | Device | Firmware | Chip | Flash |
 | --- | --- | --- | --- |
 | Heltec V3 | APE DualBoot | ESP32-S3 | 8 MB |
-| Heltec V4 | APE DualBoot | ESP32-S3 | 16 MB |
+| Heltec V4 | APE DualBoot + Wi-Fi OTA | ESP32-S3 | 16 MB |
 | Waveshare T147 LoRa | WadaMesh + Meshtastic DualBoot + Wi-Fi OTA | ESP32-S3 | 16 MB |
 | Waveshare T147 No-LoRa | Meshtastic (No-LoRa) | ESP32-S3 | 16 MB |
 
-## Two install modes
+## Installation modes
 
-- **WIPE & INSTALL (FACTORY)** — a clean install. Erases the entire flash and
-  writes the APE factory image to the documented offsets. Any existing
-  firmware, settings and data may be destroyed.
-- **UPDATE EXISTING APE** — writes only the declared update partitions and
-  **never** performs a full erase. It is intended **only** for a device already
-  running the corresponding APE target/layout. Each target keeps its declared
-  update plan; **T147 DualBoot** updates WadaMesh and Meshtastic over USB and
-  includes the loader slot only when a release marks the loader changed, after
-  verifying 16MB flash and the exact installed OTA-v2 partition sector. The
-  same apps also update from the device OTA menu.
+- **UPDATE EXISTING APE** — writes the update partitions for the selected target and
+  never performs a full erase. Use it only on a device already running that APE
+  layout: T147 DualBoot and Heltec V4 verify the installed partition table before
+  any write. The loader slot is written only when a release marks the loader
+  changed. T147 DualBoot and Heltec V4 also update from the device's own Wi-Fi OTA
+  menu; the loader itself is always USB-only.
+- **CLEAN INSTALL — ERASES ALL** — erases the whole flash and writes the factory
+  image. Firmware, settings and stored data are removed. Use it for a first install
+  or to convert a standalone Meshtastic board to DualBoot.
 
-The flasher does not auto-detect board models. T147 DualBoot updates add a
-partition-layout check before any write, including a repeat check at the
-write boundary. Incompatible standalone Meshtastic needs a clean installation
-to convert to DualBoot; that conversion erases settings. NoLoRa remains unchanged.
-The previous standalone LoRa build is retained locally only. The public T147
-choices are LoRa DualBoot OTA and NoLoRa Meshtastic.
+Boards are not auto-detected: select the exact model and mode yourself. A mismatched
+target is refused by the layout guard instead of being converted in place.
 
-The T147 OTA feed uses signed P-256 schema-3 manifests from GitHub Pages, with
-independent WadaMesh/Meshtastic packages, one operation at a time and manual Test /
-Confirm. The Source page is read-only; production always uses the official URL.
-See [the release procedure](docs/T147_DUALBOOT_OTA_RELEASE.md).
+## How to flash
 
-## How it works
+1. Open the live site in desktop Chrome or Edge (mobile browsers do not expose Web
+   Serial).
+2. Pick your device and installation mode.
+3. Complete the responsibility checkboxes (T147 LoRa also asks you to verify the
+   external SX1262 wiring).
+4. Connect the board with a USB data cable and select its serial port.
+5. Flash → verify → reset. Written flash is read back and verified against the
+   catalog image.
 
-1. Pick your device.
-2. Choose **UPDATE** or **WIPE & INSTALL**.
-3. Accept the responsibility checkboxes (and verify wiring for T147 LoRa).
-4. Connect the board over USB (Web Serial — desktop Chrome/Edge).
-5. Flash → verify → reset.
+## Firmware
+
+The catalog (`public/data/firmware-catalog.json`) pins every artifact by SHA-256,
+and each download is checked before a write begins. Wi-Fi OTA updates are delivered
+as signed P-256 schema-3 manifests; the loader verifies signature, version, size and
+the installed identity before installing. Only compiled firmware and operational
+metadata are published here — never firmware source.
+
+Release details and artifact hashes: [`docs/FIRMWARE.md`](docs/FIRMWARE.md).
+
+## Development
+
+```bash
+npm install
+npm run dev        # local dev server (localhost is a secure context)
+npm run build      # production build into dist/
+```
 
 ## Repository layout
 
@@ -69,100 +72,39 @@ scripts/                validation + checksum tooling
 .github/workflows/      GitHub Actions → GitHub Pages deploy
 ```
 
-### Adding a device
+To add a device: drop the firmware under `public/firmware/<id>/{factory,update}/`,
+add its catalog entry, add a board image under `public/assets/boards/`, and
+regenerate checksums (`python3 scripts/generate_checksums.py`). No app code changes
+are needed.
 
-1. Add firmware artifacts under `public/firmware/<id>/{factory,update}/`.
-2. Add an entry to `public/data/firmware-catalog.json`.
-3. Add a board image under `public/assets/boards/`.
-4. Regenerate checksums: `python3 scripts/generate_checksums.py`.
+## Validation and deployment
 
-No app code changes required.
-
-## Development
-
-```bash
-npm install
-npm run dev        # local dev server (localhost is a secure context)
-npm run build      # production build into dist/
-```
-
-## Validation & CI
-
-Pushing to `main` runs:
-
-1. `python3 scripts/validate_catalog.py` — files exist, JSON valid, SHA-256 match.
-2. `python3 scripts/validate_flash_plans.py` — update `eraseAll=false`, factory
-   `eraseAll=true`, no update part points at a factory image, offsets in range,
-   every artifact within the flash bounds, no overlapping artifacts, and
-   loader-inclusion rules.
-3. `python3 scripts/test_flash_plans.py` — unit tests for flash-plan bounds,
-   overlap and loader rules.
-4. `python3 scripts/validate_ota_release.py` — P-256 signatures, ESP checksums,
-   factory/app/loader/table correspondence and USB guards.
-5. `python3 scripts/test_ota_release.py` — corrupt/unsafe-package rejection.
-6. `python3 scripts/validate_source_privacy.py public` and
-   `python3 scripts/test_source_privacy.py` — reject private loader sources and
-   metadata. `python3 scripts/test_binary_distribution.py` and
-   `python3 scripts/validate_binary_distribution.py public` additionally forbid
-   firmware source packages, renamed archives and source-download metadata.
-7. `python3 scripts/generate_checksums.py --check` — checksums consistent.
-8. `npm test` — web-app behavior (SHA-256 verification before flash, chip-family,
-   flash-size, loaderChanged, reset/serial monitor).
-9. `npm run build` followed by both privacy and binary-distribution validators
-   on `dist/` → deploy to GitHub Pages over HTTPS.
-
-A failing validation blocks deployment.
+Pushing to `main` runs the repository validators and test suites — catalog, flash
+plans, signed OTA release, source privacy, binary-only distribution, checksums,
+`npm test` and `npm run build` — then deploys `dist/` to GitHub Pages. A failing
+check blocks deployment.
 
 ## Licensing
 
-- **Web app code** (`src/`, `scripts/`, `index.html`) — MIT. See `LICENSE`.
-- **esptool-js** (flasher engine) — Apache License 2.0, npm dependency.
-- **Third-party firmware applications** (`public/firmware/`) — keep their
-  upstream licenses: the Meshtastic and WadaMesh applications are **GPL-3.0**
-  and the MeshCore components are **MIT**. Binary-only packaging does not remove
-  applicable corresponding-source obligations. See `THIRD_PARTY_LICENSES.md`.
-- **APE T147 loader** — a separate APE firmware component, distributed as a
-  compiled binary. Its implementation source is private and is not published.
-- **Logo and board imagery** — owner rights reserved. See `ASSET_SOURCES.md`.
+- Web app code (`src/`, `scripts/`, `index.html`) — MIT. See `LICENSE`.
+- esptool-js — Apache-2.0, npm dependency.
+- Firmware applications — Meshtastic and WadaMesh: GPL-3.0; MeshCore: MIT.
+- APE loaders — separate components distributed as compiled binaries only; their
+  implementation source is private.
+- Logo and board photography — owner rights reserved. See
+  [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md).
 
-### Source provenance
+## Troubleshooting
 
-Every device in `public/data/firmware-catalog.json` carries a `provenance`
-object recording, per component, the version, upstream source repository and
-commit identifier where known. Unknown values are left `null` (pending) rather
-than invented. The web interface exposes these values and labels missing upstream
-links explicitly. It does not offer firmware source-package downloads.
-The independent APE T147 loader is a separate firmware component; its
-implementation source is not included in the current public release. Its source
-commit is not recorded because none is available.
-
-Removing files from the current tree or rewriting public history cannot recall
-third-party downloads or guarantee removal from GitHub caches and fork networks.
-This packaging policy does not purport to revoke rights granted by an applicable
-license.
-
-The upstream application projects are:
-
-- **Meshtastic** — https://github.com/meshtastic/firmware (GPL-3.0)
-- **WadaMesh** — https://github.com/ALLFATHER-BV/wadamesh (GPL-3.0)
-- **MeshCore** — https://github.com/meshcore-dev/MeshCore (MIT)
-
-## Connection and recovery
-
-- If no port is listed, use desktop Chrome or Edge, verify that the cable
-  carries data, close other serial tools and reconnect the board.
-- Bootloader button sequences differ by product. Follow the board
-  manufacturer's documented download-mode procedure rather than assuming one
-  universal BOOT/RESET sequence.
-- After an interrupted or incompatible update, reconnect the same target and
-  retry. **WIPE & INSTALL** can recover a clean layout, but erases the entire
-  flash including firmware, settings and stored data.
-- Report reproducible flasher problems in
-  [GitHub Issues](https://github.com/projectsape/ape-firmware-center/issues).
+- No serial port listed: use desktop Chrome/Edge, a USB **data** cable, close other
+  serial tools and reconnect the board.
+- Bootloader mode differs per board; follow the manufacturer's documented sequence
+  instead of assuming a universal one.
+- After an interrupted or incompatible update, reconnect the same target and retry.
+  A clean install recovers a known-good layout, erasing data.
 
 ## Disclaimer
 
-APE firmware and Projects APE Flasher are **experimental community projects
-provided free of charge and without warranty**. Flashing carries inherent risks
-including configuration loss, data loss, failed boot, or the need to manually
-recover a device. Use at your own risk.
+APE firmware and the flasher are experimental community projects provided as-is,
+without warranty. Flashing carries risks including configuration loss, data loss
+or a device that needs manual recovery. Use at your own risk.

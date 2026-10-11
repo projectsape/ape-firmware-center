@@ -1,48 +1,44 @@
-# Third-party licenses and notices
+# Third-party licenses and credits
 
-This repository mixes independently-licensed components. The license that
-applies depends on which part you are using.
+## Web application — MIT
 
-## 1. Web application code — MIT
+The web app itself (`src/`, `scripts/`, `tests/`, `index.html` and the build
+tooling) is licensed under the MIT License. See `LICENSE`.
 
-Everything in `src/`, `scripts/`, `tests/`, `index.html`, and the build tooling
-(the Projects APE Flasher web app itself) is licensed under the MIT License.
-See `LICENSE`.
+## esptool-js — Apache-2.0
 
-## 2. esptool-js — Apache License 2.0
+Flasher engine: [esptool-js](https://github.com/espressif/esptool-js), Copyright
+Espressif Systems, Apache License 2.0. Used as an npm dependency, not vendored
+source.
 
-The flasher engine is [esptool-js](https://github.com/espressif/esptool-js),
-Copyright Espressif Systems, licensed under the Apache License 2.0. It is an
-npm dependency (`esptool-js@^0.6.1`), not vendored source. Redistribution under
-Apache-2.0 requires retaining its copyright notice and license text; the full
-text is available in the esptool-js repository.
+## Firmware applications
 
-## 3. APE firmware components — component-specific terms
+Compiled firmware keeps its upstream license:
 
-The firmware collection contains distinct application and loader components;
-licensing and source availability are described per component:
+- **Meshtastic** — GPL-3.0 — https://github.com/meshtastic/firmware
+- **WadaMesh** — GPL-3.0 — https://github.com/ALLFATHER-BV/wadamesh
+- **MeshCore** — MIT, Copyright (c) 2025 Scott Powell / rippleradios.com —
+  https://github.com/meshcore-dev/MeshCore
 
-- **Meshtastic application builds** — GNU General Public License v3.0
-  (GPL-3.0).
-- **WadaMesh application builds** — GPL-3.0.
-- **MeshCore components** — MIT License, Copyright (c) 2025 Scott Powell /
-  rippleradios.com.
-- **APE T147 loader** — a separate firmware component. Its implementation
-  source is retained privately. The catalog records its version and factual
-  local source state without publishing source or inventing a source commit.
+These applications are distributed here as compiled binaries; redistributing them
+carries the corresponding-source obligations of their licenses, and application
+source is not hosted in this repository.
 
-Distributing a GPL-licensed application carries the corresponding-source
-obligations that apply to that application. This webflasher serves compiled
-firmware and operational metadata, not firmware source packages; this packaging
-policy does not remove those obligations or constitute a claim that they have
-been fulfilled. The loader's presence alongside
-those applications does not, by itself, determine the loader source's license.
-This repository does not offer the private loader implementation source under
-GPL. These descriptions document component and source boundaries; they do not
-purport to revoke or change rights granted by any applicable license.
+The **APE loaders** are separate APE firmware components, distributed as compiled
+binaries only. Their implementation source is private.
 
-## 4. Brand and product imagery — owner rights reserved
+## Brand and product imagery
 
-The Projects APE logo and the Heltec / Waveshare board photography retain their
-owners' rights and are **not** covered by this repository's MIT license. See
-`ASSET_SOURCES.md` for provenance and ownership.
+Not covered by the repository's MIT license:
+
+- **Projects APE logo** — Projects APE. Originals under
+  `public/assets/logo/originals/`.
+- **Heltec V3/V4 board photography** — Heltec Automation
+  ([V3](https://heltec.org/project/wifi-lora-32-v3/),
+  [V4](https://heltec.org/project/wifi-lora-32-v4/)). Originals under
+  `public/assets/boards/originals/`.
+- **T147 board photography** — maintainer-provided photo of the Waveshare
+  ESP32-S3-Touch-LCD-1.47
+  (https://www.waveshare.com/esp32-s3-touch-lcd-1.47.htm). Trademarks remain with
+  Waveshare.
+- **Meshtastic device artwork** — not redistributed by this repository.
