@@ -86,9 +86,9 @@
    "requiresExternalRadio": false,
    "wiring": null,
    "loader": {
-    "file": "firmware/heltec-v4/update/loader-1eda2d4f36bb015d.bin",
+    "file": "firmware/heltec-v4/update/loader-21c3c9d2cda5bc18.bin",
     "offset": "0x20000",
-    "sha256": "1eda2d4f36bb015d579b884ea83e3a3469897f3da7bcf545dfc9d44a3462625d",
+    "sha256": "21c3c9d2cda5bc18d4dfc22aaa1e1f9c27dbc3a48d9b987fb8b9ac5d4bc9a267",
     "note": "Not flashed by default. Included in an update only when a release marks loaderChanged."
    },
    "factory": {
@@ -96,9 +96,9 @@
     "parts": [
      {
       "name": "factory",
-      "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-d3ee33ee842206d6.factory.bin",
+      "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-c7f2af7bacd5e3ed.factory.bin",
       "offset": "0x0",
-      "sha256": "d3ee33ee842206d694fb92ffaac962db4ce77436078e0c7eb12e185573d5a12b"
+      "sha256": "c7f2af7bacd5e3ed50fddf470eae2a6d59c46da33428d4d8f6ec9757b325dd07"
      }
     ]
    },
@@ -129,7 +129,7 @@
     "loaderChanged": true
    },
    "meshcoreVersion": "v1.17.1",
-   "loaderVersion": "UIv4.1-20261010",
+   "loaderVersion": "UIv4.2-20261010",
    "provenance": {
     "meshcore": {
      "version": "v1.17.1",
@@ -142,7 +142,7 @@
      "source": "https://github.com/meshtastic/firmware"
     },
     "loader": {
-     "version": "UIv4.1-20261010",
+     "version": "UIv4.2-20261010",
      "commit": null,
      "source": null,
      "sourceState": "local-uncommitted"

@@ -11,8 +11,8 @@ install identical bytes:
   `019b1a7be443b828b91931b09fd56d462e30ad61104e23c72b715752778f6f70`
 - Meshtastic `2.8.1.2a8d5a2` — 2,298,880 bytes, SHA256
   `4bb042f4bac160a8d9d9679644c5b81a8b7b16bd997e22f9f223f389c52664b0`
-- Loader `UIv4.1-20261010` — 1,009,520 bytes, SHA256
-  `1eda2d4f36bb015d579b884ea83e3a3469897f3da7bcf545dfc9d44a3462625d`
+- Loader `UIv4.2-20261010` — 1,009,664 bytes, SHA256
+  `21c3c9d2cda5bc18d4dfc22aaa1e1f9c27dbc3a48d9b987fb8b9ac5d4bc9a267`
 
 This webflasher distributes compiled firmware and operational metadata, not
 firmware source packages.
@@ -66,9 +66,9 @@ cached approval survives a changed connection or plan.
 
 ## Artifacts
 
-- `firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-d3ee33ee842206d6.factory.bin`
-  — 16 MiB, SHA256 `d3ee33ee842206d694fb92ffaac962db4ce77436078e0c7eb12e185573d5a12b`
-- `firmware/heltec-v4/update/loader-1eda2d4f36bb015d.bin`
+- `firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-c7f2af7bacd5e3ed.factory.bin`
+  — 16 MiB, SHA256 `c7f2af7bacd5e3ed50fddf470eae2a6d59c46da33428d4d8f6ec9757b325dd07`
+- `firmware/heltec-v4/update/loader-21c3c9d2cda5bc18.bin`
 - `firmware/heltec-v4/update/partitions-ota-v1.bin`
 - `firmware/heltec-v4/update/meshcore/{manifest.json,meshcore-019b1a7be443b828.bin}`
 - `firmware/heltec-v4/update/meshtastic/{manifest.json,meshtastic-4bb042f4bac160a8.bin}`
@@ -110,3 +110,7 @@ signed feed.
 - 2026-10-10 — loader `UIv4.1-20261010`: the application cards keep two items
   (the action and BACK). The check runs automatically and the action triggers it
   when the application has not been checked yet, so the separate manual item is gone.
+- 2026-10-10 — loader `UIv4.2-20261010`: leaving OTA (exit, portal or error) now re-arms a
+  fresh five-second countdown in the selector for the last application selection, with the
+  same trial/recovery exception as the T147 reference; the countdown really boots at its
+  deadline (host case `selector_rearms_after_ota`).
