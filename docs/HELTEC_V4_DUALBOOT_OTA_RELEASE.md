@@ -11,8 +11,8 @@ install identical bytes:
   `019b1a7be443b828b91931b09fd56d462e30ad61104e23c72b715752778f6f70`
 - Meshtastic `2.8.1.2a8d5a2` — 2,298,880 bytes, SHA256
   `4bb042f4bac160a8d9d9679644c5b81a8b7b16bd997e22f9f223f389c52664b0`
-- Loader `UIv4-20261010` — 1,009,536 bytes, SHA256
-  `84f69650db84a1558e3ec75d76612c133e8b52a8c0b3a6888b7999c06dc37f10`
+- Loader `UIv4.1-20261010` — 1,009,520 bytes, SHA256
+  `1eda2d4f36bb015d579b884ea83e3a3469897f3da7bcf545dfc9d44a3462625d`
 
 This webflasher distributes compiled firmware and operational metadata, not
 firmware source packages.
@@ -66,9 +66,9 @@ cached approval survives a changed connection or plan.
 
 ## Artifacts
 
-- `firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-13791a17a7bdb97e.factory.bin`
-  — 16 MiB, SHA256 `13791a17a7bdb97e69d57d9e88bce2e3be83012f70f40dd1afb8bbcaf34e6f96`
-- `firmware/heltec-v4/update/loader-84f69650db84a155.bin`
+- `firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-d3ee33ee842206d6.factory.bin`
+  — 16 MiB, SHA256 `d3ee33ee842206d694fb92ffaac962db4ce77436078e0c7eb12e185573d5a12b`
+- `firmware/heltec-v4/update/loader-1eda2d4f36bb015d.bin`
 - `firmware/heltec-v4/update/partitions-ota-v1.bin`
 - `firmware/heltec-v4/update/meshcore/{manifest.json,meshcore-019b1a7be443b828.bin}`
 - `firmware/heltec-v4/update/meshtastic/{manifest.json,meshtastic-4bb042f4bac160a8.bin}`
@@ -107,3 +107,6 @@ signed feed.
 
 - 2026-10-10 — Heltec V4 DualBoot UI v4 loader, layout `ape-heltec-v4-dualboot-ota-v1`,
   signed feed, USB layout guard, new factory. Owner-authorized.
+- 2026-10-10 — loader `UIv4.1-20261010`: the application cards keep two items
+  (the action and BACK). The check runs automatically and the action triggers it
+  when the application has not been checked yet, so the separate manual item is gone.
