@@ -4,10 +4,10 @@
   "layout": "ape-heltec-v4-dualboot-ota-v1",
   "feedUrl": "https://projectsape.github.io/ape-firmware-center/firmware/heltec-v4/update",
   "loader": {
-    "file": "firmware/heltec-v4/update/loader-21c3c9d2cda5bc18.bin",
-    "bytes": 1009664,
-    "sha256": "21c3c9d2cda5bc18d4dfc22aaa1e1f9c27dbc3a48d9b987fb8b9ac5d4bc9a267",
-    "version": "UIv4.2-20261010",
+    "file": "firmware/heltec-v4/update/loader-21da177a6f650766.bin",
+    "bytes": 1009696,
+    "sha256": "21da177a6f6507668238901a352537b1a879dec22cddb65c125632b9267c6b6a",
+    "version": "UIv4.3-20261010",
     "offset": "0x20000",
     "slotSize": "0x180000",
     "bench": false,
@@ -16,9 +16,9 @@
     "acceptedOn": "2026-10-10"
   },
   "factory": {
-    "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-c7f2af7bacd5e3ed.factory.bin",
+    "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-1e5c5d4257e3ed6c.factory.bin",
     "bytes": 16777216,
-    "sha256": "c7f2af7bacd5e3ed50fddf470eae2a6d59c46da33428d4d8f6ec9757b325dd07"
+    "sha256": "1e5c5d4257e3ed6c59edfac48cf60207560f39c018613cc9e966e8ab94ac29bc"
   },
   "partitionTable": {
     "file": "firmware/heltec-v4/update/partitions-ota-v1.bin",
