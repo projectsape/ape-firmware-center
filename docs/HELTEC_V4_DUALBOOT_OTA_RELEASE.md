@@ -11,11 +11,12 @@ install identical bytes:
   `019b1a7be443b828b91931b09fd56d462e30ad61104e23c72b715752778f6f70`
 - Meshtastic `2.8.1.2a8d5a2` — 2,298,880 bytes, SHA256
   `4bb042f4bac160a8d9d9679644c5b81a8b7b16bd997e22f9f223f389c52664b0`
-- Loader `UIv4.4-20261010` — 1,009,696 bytes, SHA256
-  `29b179f140403bfadf22fd3663df4aba2f1ccbd98f099e68a49ebbedc4dc15ca`
-  (fixes an unsigned `millis()` underflow that made the 5s selector countdown expire in the
-  same loop iteration it was re-armed after leaving OTA with BACK; `due()`/`remaining()` now
-  use signed deltas, matching the T147 `deadlineReached` reference)
+- Loader `UIv4.5c-20261010` — 1,012,048 bytes, SHA256
+  `2aa4b3da757219c312033fad2d9072c7e1af197d7780bfe2dc8f2eb9a8e62d75`
+  (BACK parity with the owner's T147 loader: input is serviced before automatic OTA work is
+  scheduled, CANCEL while busy is separate from BACK when idle, and a cancelled exit no longer
+  relaunches a connect/check; the five-second selector countdown is kept, and the loop-task
+  stack is 16 KiB so the OTA-entry call chain cannot trip the stack canary)
 
 This webflasher distributes compiled firmware and operational metadata, not
 firmware source packages.
@@ -69,9 +70,9 @@ cached approval survives a changed connection or plan.
 
 ## Artifacts
 
-- `firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-23523cec725b3311.factory.bin`
-  — 16 MiB, SHA256 `23523cec725b3311b00fad613cc3048f63f1d7d5d03bea5f3f305b12ada466f9`
-- `firmware/heltec-v4/update/loader-29b179f140403bfa.bin`
+- `firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-c02af3a24d0c57ed.factory.bin`
+  — 16 MiB, SHA256 `c02af3a24d0c57ed39ad6048ea3a6a4de9b9007997edc0733e4d95661a0731c5`
+- `firmware/heltec-v4/update/loader-2aa4b3da757219c3.bin`
 - `firmware/heltec-v4/update/partitions-ota-v1.bin`
 - `firmware/heltec-v4/update/meshcore/{manifest.json,meshcore-019b1a7be443b828.bin}`
 - `firmware/heltec-v4/update/meshtastic/{manifest.json,meshtastic-4bb042f4bac160a8.bin}`
@@ -128,3 +129,14 @@ signed feed.
   without ever showing the selector (device log: `Starting Meshtastic` right after the press).
   `due()`/`remaining()` now use signed deltas, the T147 `deadlineReached` pattern; the host suite
   asserts that a timestamp older than `started_` is not due (that assertion fails on UIv4.3).
+- 2026-10-10 — loader `UIv4.5c-20261010` (owner accepted after on-board OTA→BACK test): the
+  selector no longer fights BACK. As in the T147 reference, the button is serviced before the
+  automatic entry work runs, so returning from OTA stops scheduling a connect/check/portal in the
+  same pass; an operation in progress shows CANCEL and stays in OTA (BACK returns only when idle);
+  and the selector keeps its live five-second countdown while OTA cleanup finishes, deferring only
+  the launch if the deadline expires busy (never booting from a stale deadline). Also raises the
+  Arduino loop-task stack to 16 KiB: `Stack canary watchpoint triggered (loopTask)` was reproduced
+  entering OTA (`snapshot → enterOta → loop`, frames 0x630+0x630+0x1240 over the 8192-byte default).
+  Directed evidence: 14/14 BACK cases after the fix (four failed before), plus the T147-parity
+  cases (idle BACK before auto-work, CANCEL≠BACK, cancelled exit stops). OTA→BACK confirmed on the
+  board by the owner; host cases still are not a tactile measurement.
