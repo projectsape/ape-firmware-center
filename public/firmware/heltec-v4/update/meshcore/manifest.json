@@ -2,14 +2,14 @@
   "schema_version": 3,
   "version": "v1.17.1",
   "app_version": "v1.17.1",
-  "commit": "e94125987ed87497e706a0b54d1e80c709343980",
+  "commit": "a366955cb2f67b8e6842d4f00d2b6a554dddd88a",
   "health_protocol": 0,
   "board": "heltec-v4-dualboot",
   "component": "meshcore",
   "layout": "ape-heltec-v4-dualboot-ota-v1",
-  "size": 1271264,
-  "sha256": "019b1a7be443b828b91931b09fd56d462e30ad61104e23c72b715752778f6f70",
-  "firmware_url": "meshcore-019b1a7be443b828.bin",
-  "notes": "USB=OTA; dualboot layout v1; same bytes as factory and USB.",
-  "signature": "MEQCIChOpWJNk9ake3pJmFhNaSaYH20WZUP5JkBUKHfNJQ68AiBXTVoBZhS3F5LSw3Ppcc/GoLlfQxyHQhfu/LNZ/ntkOA=="
+  "size": 1270480,
+  "sha256": "8c540a54da6e2991f7a26260e2031bc15788662989f2e4d5ac0d43fa773309f1",
+  "firmware_url": "meshcore-8c540a54da6e2991.bin",
+  "notes": "USB=OTA; same bytes as factory and USB; dualboot layout unchanged.",
+  "signature": "MEUCIQCXpae1Kn/1HxT52TSBlFcA0CCU75JpWaPUnAMb0MNpLwIgEdZIjNByRnQS7Flvqx9pq+AQkXhzw7lFlNIUugTEjNE="
 }
