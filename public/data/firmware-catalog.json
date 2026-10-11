@@ -86,9 +86,9 @@
    "requiresExternalRadio": false,
    "wiring": null,
    "loader": {
-    "file": "firmware/heltec-v4/update/loader-e0397ea82bb60c8f.bin",
+    "file": "firmware/heltec-v4/update/loader-84f69650db84a155.bin",
     "offset": "0x20000",
-    "sha256": "e0397ea82bb60c8f02e8a7f5a60f62431986a410225af231215d9ab25d9c5e63",
+    "sha256": "84f69650db84a1558e3ec75d76612c133e8b52a8c0b3a6888b7999c06dc37f10",
     "note": "Not flashed by default. Included in an update only when a release marks loaderChanged."
    },
    "factory": {
@@ -96,9 +96,9 @@
     "parts": [
      {
       "name": "factory",
-      "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-9504a34179098834.factory.bin",
+      "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-13791a17a7bdb97e.factory.bin",
       "offset": "0x0",
-      "sha256": "9504a34179098834a7f490af410cf47261335b3d3a9996aae8a5460bb2d0c917"
+      "sha256": "13791a17a7bdb97e69d57d9e88bce2e3be83012f70f40dd1afb8bbcaf34e6f96"
      }
     ]
    },

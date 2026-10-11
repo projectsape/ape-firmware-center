@@ -11,8 +11,8 @@ install identical bytes:
   `019b1a7be443b828b91931b09fd56d462e30ad61104e23c72b715752778f6f70`
 - Meshtastic `2.8.1.2a8d5a2` — 2,298,880 bytes, SHA256
   `4bb042f4bac160a8d9d9679644c5b81a8b7b16bd997e22f9f223f389c52664b0`
-- Loader `UIv4-20261010` — 1,026,752 bytes, SHA256
-  `e0397ea82bb60c8f02e8a7f5a60f62431986a410225af231215d9ab25d9c5e63`
+- Loader `UIv4-20261010` — 1,009,536 bytes, SHA256
+  `84f69650db84a1558e3ec75d76612c133e8b52a8c0b3a6888b7999c06dc37f10`
 
 This webflasher distributes compiled firmware and operational metadata, not
 firmware source packages.
@@ -57,14 +57,18 @@ cached approval survives a changed connection or plan.
   `firmware/heltec-v4/ota-public-key.pem`; the private signing key stays outside
   this repository.
 - The loader embeds the same public key, pins the feed URL, and verifies TLS
-  with the ESP-IDF certificate bundle. Plain HTTP and insecure TLS are refused;
-  there is no bench interface in the production loader.
+  against the embedded ISRG public roots (`ISRG Root X1` and `ISRG Root X2`).
+  The ESP-IDF certificate bundle linked by this build does not carry the ISRG
+  roots, so anchoring them explicitly is required; the check stays strict (no
+  plain HTTP, hostname verification on, no insecure fallback) and there is no
+  bench interface in the production loader. If the feed's CA rotates, a loader
+  update (USB only) extends the root list.
 
 ## Artifacts
 
-- `firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-9504a34179098834.factory.bin`
-  — 16 MiB, SHA256 `9504a34179098834a7f490af410cf47261335b3d3a9996aae8a5460bb2d0c917`
-- `firmware/heltec-v4/update/loader-e0397ea82bb60c8f.bin`
+- `firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-13791a17a7bdb97e.factory.bin`
+  — 16 MiB, SHA256 `13791a17a7bdb97e69d57d9e88bce2e3be83012f70f40dd1afb8bbcaf34e6f96`
+- `firmware/heltec-v4/update/loader-84f69650db84a155.bin`
 - `firmware/heltec-v4/update/partitions-ota-v1.bin`
 - `firmware/heltec-v4/update/meshcore/{manifest.json,meshcore-019b1a7be443b828.bin}`
 - `firmware/heltec-v4/update/meshtastic/{manifest.json,meshtastic-4bb042f4bac160a8.bin}`
@@ -92,8 +96,12 @@ signed feed.
   TLS contract (public CA bundle, hostname verification kept, no private CA).
 - On board: the factory install, loader-only updates and a full signed-OTA
   reinstall of both applications with these exact application bytes were
-  verified on the Heltec V4 R2; the published feed check from the device follows
-  this publication.
+  verified on the Heltec V4 R2.
+- On board: the published feed is fetched over TLS with the embedded ISRG
+  anchors. The bundle-only build failed every attempt with
+  `MBEDTLS_ERR_SSL_CA_CHAIN_REQUIRED` (reported as `tls=30336`); after pinning
+  the roots the loader completes the check with no TLS or HTTP error in the
+  serial log and the OTA worker holds the verified session.
 
 ## Publication history
 
