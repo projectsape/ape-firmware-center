@@ -11,8 +11,11 @@ install identical bytes:
   `019b1a7be443b828b91931b09fd56d462e30ad61104e23c72b715752778f6f70`
 - Meshtastic `2.8.1.2a8d5a2` — 2,298,880 bytes, SHA256
   `4bb042f4bac160a8d9d9679644c5b81a8b7b16bd997e22f9f223f389c52664b0`
-- Loader `UIv4.3-20261010` — 1,009,696 bytes, SHA256
-  `21da177a6f6507668238901a352537b1a879dec22cddb65c125632b9267c6b6a`
+- Loader `UIv4.4-20261010` — 1,009,696 bytes, SHA256
+  `29b179f140403bfadf22fd3663df4aba2f1ccbd98f099e68a49ebbedc4dc15ca`
+  (fixes an unsigned `millis()` underflow that made the 5s selector countdown expire in the
+  same loop iteration it was re-armed after leaving OTA with BACK; `due()`/`remaining()` now
+  use signed deltas, matching the T147 `deadlineReached` reference)
 
 This webflasher distributes compiled firmware and operational metadata, not
 firmware source packages.
@@ -66,9 +69,9 @@ cached approval survives a changed connection or plan.
 
 ## Artifacts
 
-- `firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-1e5c5d4257e3ed6c.factory.bin`
-  — 16 MiB, SHA256 `1e5c5d4257e3ed6c59edfac48cf60207560f39c018613cc9e966e8ab94ac29bc`
-- `firmware/heltec-v4/update/loader-21da177a6f650766.bin`
+- `firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-23523cec725b3311.factory.bin`
+  — 16 MiB, SHA256 `23523cec725b3311b00fad613cc3048f63f1d7d5d03bea5f3f305b12ada466f9`
+- `firmware/heltec-v4/update/loader-29b179f140403bfa.bin`
 - `firmware/heltec-v4/update/partitions-ota-v1.bin`
 - `firmware/heltec-v4/update/meshcore/{manifest.json,meshcore-019b1a7be443b828.bin}`
 - `firmware/heltec-v4/update/meshtastic/{manifest.json,meshtastic-4bb042f4bac160a8.bin}`
@@ -118,3 +121,10 @@ signed feed.
   countdown for the last application selection and it boots at its deadline, with the residual
   button hold after the LONG selection no longer cancelling it. Cases:
   `selector_rearms_after_ota`, `selector_rearm_survives_back_hold`.
+- 2026-10-10 — loader `UIv4.4-20261010`: fixes the countdown expiring the instant BACK was
+  long-pressed in OTA. `returnToSelector()` re-arms with a fresh `millis()` while the main loop
+  still holds the timestamp read before the press, so the unsigned `(now - started_)` underflowed
+  to ~2^32 and `due()` was true in the same iteration: the loader booted the last application
+  without ever showing the selector (device log: `Starting Meshtastic` right after the press).
+  `due()`/`remaining()` now use signed deltas, the T147 `deadlineReached` pattern; the host suite
+  asserts that a timestamp older than `started_` is not due (that assertion fails on UIv4.3).
