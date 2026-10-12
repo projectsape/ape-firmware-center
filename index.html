@@ -99,7 +99,7 @@
           </div>
           <div class="integrity-note">
             <strong>What the integrity check means</strong>
-            <p>Every downloaded artifact is SHA-256 checked against this site's catalog before writing. This detects a corrupt or mismatched download; it is not a digital signature and does not independently authenticate the publisher.</p>
+            <p>Every downloaded artifact is SHA-256 checked against this site's catalog before writing, and the catalog itself is verified against a P-256 key pinned in this app before it is used. This authenticates the published firmware and detects a corrupt or mismatched download. It does not protect against a compromised web app or hosting account that can replace the verification code, and it does not reject an older, correctly signed catalog.</p>
             <a href="https://github.com/projectsape/ape-firmware-center/issues" target="_blank" rel="noopener">Report a problem on GitHub ↗</a>
           </div>
         </div>
