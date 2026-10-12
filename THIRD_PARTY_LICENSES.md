@@ -20,9 +20,18 @@ Compiled firmware keeps its upstream license:
 - **MeshCore** — MIT, Copyright (c) 2025 Scott Powell / rippleradios.com —
   https://github.com/meshcore-dev/MeshCore
 
-These applications are distributed here as compiled binaries; redistributing them
-carries the corresponding-source obligations of their licenses, and application
-source is not hosted in this repository.
+These applications are distributed here as compiled binaries. For the GPL-3.0
+applications, [sections 1 and 6](https://www.gnu.org/licenses/gpl-3.0.html#section6)
+require the corresponding source for the distributed work, including modifications
+and the scripts needed to build it. For network distribution, section 6(d) permits
+that source on another server with equivalent access and clear directions beside
+the binaries.
+
+**Distribution limitation:** this repository does not currently provide that
+complete corresponding source or an exact-source download link for its modified
+GPL firmware. The upstream links above identify the projects; they do not resolve
+that gap. Publishing only binaries, retaining a private backup, or adding this
+notice does not satisfy the corresponding-source requirement.
 
 The **APE loaders** are separate APE firmware components, distributed as compiled
 binaries only. Their implementation source is private.

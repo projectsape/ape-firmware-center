@@ -1,5 +1,6 @@
 // Connection preparation is isolated so its ordering can be unit-tested.
 // requestPort() MUST be the first awaited operation after the user's click.
+import { needsLoaderGuard } from './loader-update.js';
 
 // Normalize chip-family tokens to a comparable form ("ESP32-S3" -> "ESP32S3").
 export function normalizeChipFamily(value) {
@@ -115,7 +116,7 @@ export async function prepareFlashSession({ flasher, device, mode, resolvePlan, 
   if (device.flashSize) {
     await flasher.checkFlashSize(device.flashSize);
   }
-  if (device.id === 't147-lora-dualboot' && mode === 'update') {
+  if (needsLoaderGuard(plan)) {
     onState('layout-check');
     await flasher.checkUpdatePlan(plan);
   }

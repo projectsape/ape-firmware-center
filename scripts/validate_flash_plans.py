@@ -10,6 +10,7 @@ Guards against:
 Exits 0 on success, 1 on failure — a failure means DO NOT DEPLOY.
 """
 
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -113,6 +114,57 @@ def find_overlap_errors(dev_id, plan_name, parts, public_dir: Path):
     return errors
 
 
+def find_v3_layout_errors(dev, public_dir: Path):
+    """Pin the existing V3 factory sector and the actual production app slots.
+
+    The ID names this web guard; it is not a new on-device partition layout.
+    """
+    if dev.get('id') != 'heltec-v3':
+        return []
+    try:
+        update = dev['update']
+        layout = update['requiredLayout']
+        digest = '136629b9345e7d6eec5352c12f20097c15d6f809852ecb629586ae0537517fde'
+        if (dev['chipFamily'] != 'ESP32-S3' or dev['flashSize'] != '8MB'
+                or update.get('requireVerifiedFlashSize') is not True
+                or layout['id'] != 'ape-heltec-v3-dualboot-8mb-v1'
+                or parse_offset(layout['offset']) != 0x8000 or layout['size'] != 4096
+                or layout['sha256'] != digest):
+            raise ValueError('invalid layout metadata or hardware requirements')
+
+        def artifact(relative):
+            path = (public_dir / relative).resolve()
+            if not path.is_relative_to(public_dir.resolve()):
+                raise ValueError('artifact path escapes public directory')
+            return path.read_bytes()
+
+        table = artifact(layout['file'])
+        if len(table) != 4096 or hashlib.sha256(table).hexdigest() != digest:
+            raise ValueError('partition reference differs from the production V3 table')
+        factories = dev['factory']['parts']
+        if len(factories) != 1 or parse_offset(factories[0]['offset']) != 0:
+            raise ValueError('invalid V3 factory plan')
+        factory = artifact(factories[0]['file'])
+        if len(factory) != 0x800000 or factory[0x8000:0x9000] != table:
+            raise ValueError('factory partition table differs from the V3 guard')
+        slots = {'meshcore': (0xa0000, 0x260000), 'meshtastic': (0x300000, 0x260000)}
+        parts = update['parts']
+        if len(parts) != len(slots) or {p['name'] for p in parts} != set(slots):
+            raise ValueError('V3 update requires exactly both applications')
+        parts = parts + [dict(dev['loader'], name='loader')]
+        slots['loader'] = (0x20000, 0x80000)
+        for part in parts:
+            address, capacity = slots[part['name']]
+            data = artifact(part['file'])
+            if parse_offset(part['offset']) != address or not 0 < len(data) <= capacity:
+                raise ValueError(f"{part['name']} exceeds or misses its V3 slot")
+            if factory[address:address + len(data)] != data:
+                raise ValueError(f"factory differs from V3 {part['name']}")
+    except (KeyError, TypeError, ValueError, OSError) as error:
+        return [f'heltec-v3: invalid layout guard: {error}']
+    return []
+
+
 def main() -> int:
     data = json.loads(CATALOG.read_text())
     devices = data.get("devices", [])
@@ -122,6 +174,7 @@ def main() -> int:
         dev_id = dev.get("id")
         update = dev.get("update", {})
         factory = dev.get("factory", {})
+        errors += find_v3_layout_errors(dev, PUBLIC)
 
         # --- UPDATE plan ---
         if update.get("eraseAll") is not False:

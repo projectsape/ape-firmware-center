@@ -2,18 +2,27 @@
 // site works under GitHub Pages subpath and any future custom domain.
 
 import { sha256Hex } from "./sha256.js";
+import { verifyCatalogSignature } from './catalog-signature.js';
 
 let catalogPromise = null;
 
 export function loadCatalog() {
   if (!catalogPromise) {
-    // The catalog is small and decides which firmware gets downloaded, so it is
-    // always fetched fresh (never a stale cached copy).
-    catalogPromise = fetch(new URL("./data/firmware-catalog.json", document.baseURI), {
-      cache: "no-store",
-    }).then((res) => {
-      if (!res.ok) throw new Error(`Failed to load firmware catalog (HTTP ${res.status})`);
-      return res.json();
+    // Authenticate the exact downloaded bytes before parsing or exposing any
+    // device, URL, hash or offset. Never fall back to an unsigned catalog.
+    catalogPromise = (async () => {
+      const [catalog, signature] = await Promise.all([
+        fetch(new URL('./data/firmware-catalog.json', document.baseURI), { cache: 'no-store' }),
+        fetch(new URL('./data/firmware-catalog.sig.json', document.baseURI), { cache: 'no-store' }),
+      ]);
+      if (!catalog.ok) throw new Error(`Failed to load firmware catalog (HTTP ${catalog.status})`);
+      if (!signature.ok) throw new Error(`Failed to load catalog signature (HTTP ${signature.status})`);
+      const bytes = new Uint8Array(await catalog.arrayBuffer());
+      await verifyCatalogSignature(bytes, await signature.json());
+      return JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes));
+    })().catch(error => {
+      catalogPromise = null; // a transient fetch failure must not poison retries
+      throw error;
     });
   }
   return catalogPromise;
@@ -116,7 +125,7 @@ export async function resolveFlashPlan(device, mode, fetchBytes = fetchFirmwareB
     });
   }
 
-  // The T147 DualBoot USB update is permitted only after comparing the
+  // A guarded DualBoot USB update is permitted only after comparing the
   // installed partition table with this independently SHA-verified catalog
   // artifact. Keep its bytes in the resolved plan so the flasher can repeat
   // the check at the final write boundary, even if session preparation was
@@ -155,6 +164,7 @@ export async function resolveFlashPlan(device, mode, fetchBytes = fetchFirmwareB
     parts,
     deviceId: device.id,
     operation: planKey,
+    expectedChipFamily: device.chipFamily || null,
     requireVerifiedFlashSize: plan.requireVerifiedFlashSize === true,
     expectedFlashSize: device.flashSize || null,
     requiredLayout,

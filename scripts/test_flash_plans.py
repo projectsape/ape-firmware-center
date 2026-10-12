@@ -5,8 +5,13 @@ Run: python3 scripts/test_flash_plans.py
 """
 
 import sys
+import contextlib
+import copy
+import io
+import json
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -104,6 +109,48 @@ class TestLoaderInclusion(unittest.TestCase):
         }
         plans = v.collect_plan_parts(dev)
         self.assertEqual([p["name"] for p in plans["update"]], ["app", "loader"])
+
+
+class TestV3Layout(unittest.TestCase):
+    def test_valid_v3_guard_and_factory(self):
+        catalog = json.loads(v.CATALOG.read_text())
+        dev = next(d for d in catalog['devices'] if d['id'] == 'heltec-v3')
+        self.assertEqual(v.find_v3_layout_errors(dev, v.PUBLIC), [])
+
+    def test_invalid_v3_metadata_and_slots(self):
+        catalog = json.loads(v.CATALOG.read_text())
+        original = next(d for d in catalog['devices'] if d['id'] == 'heltec-v3')
+        mutations = {
+            'wrong capacity': lambda d: d.update(flashSize='16MB'),
+            'wrong chip': lambda d: d.update(chipFamily='ESP32-C6'),
+            'unverified size': lambda d: d['update'].update(requireVerifiedFlashSize=False),
+            'wrong layout': lambda d: d['update']['requiredLayout'].update(id='other'),
+            'wrong sector': lambda d: d['update']['requiredLayout'].update(offset='0x9000'),
+            'wrong hash': lambda d: d['update']['requiredLayout'].update(sha256='0' * 64),
+            'wrong artifact': lambda d: d['update']['requiredLayout'].update(file=d['loader']['file']),
+            'missing table': lambda d: d['update']['requiredLayout'].update(file='missing.bin'),
+            'escaped table': lambda d: d['update']['requiredLayout'].update(file='../outside.bin'),
+            'wrong app offset': lambda d: d['update']['parts'][0].update(offset='0x1a0000'),
+            'duplicate app': lambda d: d['update']['parts'].append(d['update']['parts'][0]),
+            'missing app': lambda d: d['update']['parts'].pop(),
+            'wrong factory': lambda d: d['factory']['parts'][0].update(file=d['loader']['file']),
+            'wrong loader offset': lambda d: d['loader'].update(offset='0x10000'),
+        }
+        for name, mutate in mutations.items():
+            with self.subTest(name=name):
+                device = copy.deepcopy(original)
+                mutate(device)
+                self.assertTrue(v.find_v3_layout_errors(device, v.PUBLIC))
+
+    def test_v3_missing_layout_guard_blocks_deploy(self):
+        catalog = json.loads(v.CATALOG.read_text())
+        dev = next(d for d in catalog['devices'] if d['id'] == 'heltec-v3')
+        dev['update'].pop('requiredLayout', None)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'catalog.json'
+            path.write_text(json.dumps(catalog))
+            with patch.object(v, 'CATALOG', path), contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(v.main(), 1)
 
 
 if __name__ == "__main__":

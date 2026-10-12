@@ -13,6 +13,14 @@ export class LoaderUpdateError extends Error {
 // installed partition table with the catalog artifact, so a device still on an
 // older layout is refused instead of being converted behind the user's back.
 const DEVICE_GUARDS = {
+  'heltec-v3': {
+    // Web guard ID for the existing 8MB factory table; not a new layout.
+    layoutId: 'ape-heltec-v3-dualboot-8mb-v1',
+    slots: { meshcore: 0xa0000, meshtastic: 0x300000, loader: 0x20000 },
+    capacity: { meshcore: 0x260000, meshtastic: 0x260000, loader: 0x80000 },
+    requiredApps: ['meshcore', 'meshtastic'],
+    flashSize: '8MB',
+  },
   't147-lora-dualboot': {
     layoutId: 'ape-t147-dualboot-ota-v2',
     slots: { wadamesh: 0x1a0000, meshtastic: 0x520000, loader: 0x20000 },
@@ -67,7 +75,7 @@ export async function checkLoaderUpdate(plan, hardware) {
   hardware.checkChipFamily('ESP32-S3', hardware.chipName);
   const size = await hardware.checkFlashSize(guard.flashSize);
   if (!size?.reliable || size.detectedFlashSize !== guard.flashSize) {
-    throw new LoaderUpdateError('Cannot verify the required 16MB flash.', 'unverified_flash_size');
+    throw new LoaderUpdateError(`Cannot verify the required ${guard.flashSize} flash.`, 'unverified_flash_size');
   }
   let installed;
   try {
@@ -76,7 +84,7 @@ export async function checkLoaderUpdate(plan, hardware) {
     throw new LoaderUpdateError('Cannot read the installed DualBoot partition table.');
   }
   if (String(installed).trim().toLowerCase() !== md5Hex(layout.data)) {
-    throw new LoaderUpdateError('This device does not have the OTA DualBoot layout. Use Clean install to convert it.');
+    throw new LoaderUpdateError('This device does not have the required APE DualBoot layout. Use Clean install to convert it.');
   }
 }
 

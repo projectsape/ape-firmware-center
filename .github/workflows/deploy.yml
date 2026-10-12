@@ -33,6 +33,9 @@ jobs:
       - name: Validate firmware catalog
         run: python3 scripts/validate_catalog.py
 
+      - name: Verify signed USB catalog (public key only)
+        run: node scripts/catalog-signature.mjs verify public
+
       - name: Validate flash plans
         run: python3 scripts/validate_flash_plans.py
 
@@ -65,6 +68,9 @@ jobs:
 
       - name: Build website
         run: npm run build
+
+      - name: Verify built USB catalog signature
+        run: node scripts/catalog-signature.mjs verify dist
 
       - name: Validate built Pages source privacy
         run: python3 scripts/validate_source_privacy.py dist

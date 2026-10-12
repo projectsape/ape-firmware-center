@@ -48,7 +48,15 @@
       "sha256": "33be06ef0786365058ab4f32092b3d66155f390c8882a0a386087e88b80825f2"
      }
     ],
-    "loaderChanged": false
+    "loaderChanged": false,
+    "requireVerifiedFlashSize": true,
+    "requiredLayout": {
+     "id": "ape-heltec-v3-dualboot-8mb-v1",
+     "file": "firmware/heltec-v3/update/partitions-dualboot-8mb-v1.bin",
+     "sha256": "136629b9345e7d6eec5352c12f20097c15d6f809852ecb629586ae0537517fde",
+     "offset": "0x8000",
+     "size": 4096
+    }
    },
    "meshcoreVersion": "1.17.1",
    "loaderVersion": "1.0.0",
@@ -80,7 +88,7 @@
    "flashSize": "16MB",
    "psramSize": "2MB QUAD/QSPI",
    "version": "2.8.2.2a8d5a2",
-   "channel": "candidate",
+   "channel": "stable",
    "releaseDate": "2026-10-11",
    "image": "assets/boards/heltec-v4.webp",
    "requiresExternalRadio": false,
@@ -186,7 +194,7 @@
    "psramSize": "8MB",
    "display": "1.47-inch 172\u00d7320 capacitive touch LCD",
    "version": "2.8.2.18ec962",
-   "channel": "candidate",
+   "channel": "stable",
    "releaseDate": "2026-10-11",
    "image": "assets/boards/t147.webp",
    "requiresExternalRadio": true,

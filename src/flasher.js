@@ -128,6 +128,9 @@ export class Flasher {
   // Execute a resolved plan. States: "erase" (wipe only) -> "write" -> "verify".
   async flashPlan(plan, { onState = () => {}, onProgress = () => {} } = {}) {
     if (!this.loader) throw new FlasherError("Not connected.", "not_connected");
+    // All targets and both modes are rechecked before the first mutation,
+    // including eraseFlash() for a clean install. Preparation is not approval.
+    await this.checkHardwarePlan(plan);
     await executeFlashPlan(plan, {
       checkUpdate: (resolved) => this.checkUpdatePlan(resolved),
       onState,
@@ -135,6 +138,23 @@ export class Flasher {
       write: () => this._write(plan.parts, onProgress),
       verify: () => this._verify(plan.parts, onProgress),
     });
+  }
+
+  async checkHardwarePlan(plan) {
+    if (!plan.expectedChipFamily || !plan.expectedFlashSize) {
+      throw new FlasherError('Missing hardware requirements in flash plan.', 'invalid_plan');
+    }
+    // CHIP_NAME is cached by esptool-js. Read the live ROM magic instead:
+    // esptool-js 0.6.x magic2Chip maps 0x09 at this register to ESP32-S3.
+    // Every currently supported APE target is S3; unknown chips fail closed.
+    let magic;
+    try {
+      magic = await this.loader.readReg(this.loader.CHIP_DETECT_MAGIC_REG_ADDR);
+    } catch {
+      throw new FlasherError('Cannot recheck the connected chip. Reconnect and retry.', 'not_connected');
+    }
+    this.checkChipFamily(plan.expectedChipFamily, magic === 0x09 ? 'ESP32-S3' : 'unknown');
+    await this.checkFlashSize(plan.expectedFlashSize);
   }
 
   async checkUpdatePlan(plan) {

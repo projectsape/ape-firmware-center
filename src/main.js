@@ -1,6 +1,7 @@
 import { loadCatalog, getHardwareCards, resolveFlashPlan } from "./catalog.js";
 import { Flasher, FlasherError } from "./flasher.js";
 import { prepareFlashSession } from "./flash-flow.js";
+import { needsLoaderGuard } from './loader-update.js';
 import {
   el,
   shortHash,
@@ -228,15 +229,17 @@ function renderDetails(device) {
       partsList(updateDisplayPlan(device), "Update image")
     ),
     el("aside", { class: "integrity-explainer" },
-      el("strong", {}, "SHA-256 download integrity"),
-      el("p", {}, "Files are checked against the catalog before writing. This detects a corrupt or mismatched download; it is not a digital signature or independent proof of publisher identity.")
+      el("strong", {}, "Signed catalog + SHA-256"),
+      el("p", {}, "The catalog signature is verified against a key pinned in this web app, then each firmware download is checked by SHA-256. This does not protect against replacement of the web app itself.")
     ),
     device.ota ? el('section', { class: 'notes' },
       el('h4', {}, 'Wi-Fi OTA'),
-      el('p', {}, 'Open OTA in the loader, connect to Wi-Fi and choose WadaMesh or Meshtastic. Updates run one at a time, with manual Test and Confirm.'),
-      el('a', { href: device.ota.feedUrl + '/wadamesh/manifest.json', target: '_blank', rel: 'noopener' }, 'WadaMesh feed ↗'),
-      el('span', {}, ' · '),
-      el('a', { href: device.ota.feedUrl + '/meshtastic/manifest.json', target: '_blank', rel: 'noopener' }, 'Meshtastic feed ↗')
+      el('p', {}, 'Open OTA in the loader, connect to Wi-Fi and choose the application to update. Updates run one at a time, with manual Test and Confirm.'),
+      ...Object.entries(device.ota.components).flatMap(([name, component], index) => [
+        ...(index ? [el('span', {}, ' · ')] : []),
+        el('a', { href: './' + component.manifest, target: '_blank', rel: 'noopener' },
+          `${({ wadamesh: 'WadaMesh', meshcore: 'MeshCore', meshtastic: 'Meshtastic' })[name] || name} feed ↗`),
+      ])
     ) : null,
     renderProvenance(device.provenance),
     notes,
@@ -397,12 +400,13 @@ function renderConfirm(device, mode) {
 
   flashBtn.addEventListener("click", () => runFlash(device, mode));
 
-  const layoutGuarded = isUpdate && device.id === 't147-lora-dualboot';
+  const layoutGuarded = needsLoaderGuard({ deviceId: device.id, operation: isUpdate ? 'update' : 'factory' });
   const heading = isUpdate ? 'UPDATE EXISTING APE' : 'CLEAN INSTALL — ERASES ALL';
   const warning = isUpdate
     ? el("div", { class: "warning" },
-        layoutGuarded ? el('p', {}, 'Updates WadaMesh, Meshtastic and, when changed, the loader. The installed DualBoot layout is checked before writing, and settings stay in place.') : null,
-        layoutGuarded ? el('p', {}, 'Standalone Meshtastic requires Clean install to convert to DualBoot.') : null,
+        layoutGuarded ? el('p', {}, 'Updates both applications and, when changed, the loader. The installed partition layout is checked before writing; data partitions are left untouched.')
+          : el('p', {}, 'This target does not verify the installed partition table. Update only an existing compatible installation.'),
+        layoutGuarded && device.ota ? el('p', {}, 'Standalone Meshtastic requires Clean install to convert to DualBoot.') : null,
         el("p", {}, "This writes only the declared update partitions; it does not perform a full flash erase."),
         el("p", {}, "It is intended for devices already running the corresponding APE firmware/layout."),
         el("p", {}, "Using this update over incompatible firmware may result in a device that does not boot and requires a clean reinstallation."),
@@ -562,8 +566,8 @@ function friendlyError(code, err) {
   const map = {
     unsupported_browser: "Browser not supported. Use a Web Serial compatible browser (Chrome or Edge) on a supported device.",
     wrong_chip: `Wrong chip family. You selected a ${err?.details?.expectedFamily || "target"} but the connected chip is ${err?.details?.connectedChipName || "different"}.`,
-    incompatible_layout: 'This board does not have the OTA DualBoot layout. Clean install converts it and erases its data.',
-    unverified_flash_size: 'The required 16MB flash could not be verified. Reconnect the board and retry.',
+    incompatible_layout: 'The required APE DualBoot partition layout could not be verified. Reconnect and retry. Use Clean install only to change layouts; it erases all data.',
+    unverified_flash_size: 'The required flash capacity could not be verified. Reconnect the board and retry.',
     wrong_flash_size: "Flash size mismatch — the connected flash does not match the selected device.",
     verify_failed: "Verification failed — the flash contents do not match the firmware image. Reconnect and try again.",
     not_connected: "Device not connected. Reconnect the board and try again.",

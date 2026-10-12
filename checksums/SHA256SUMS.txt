@@ -5,6 +5,7 @@
 1500bfff38db8d37fbedd4fb096560c1b864710a349fc204356eb5c6cd348d68  firmware/heltec-v3/update/meshcore.bin
 33be06ef0786365058ab4f32092b3d66155f390c8882a0a386087e88b80825f2  firmware/heltec-v3/update/meshtastic-33be06ef07863650.bin
 243cc0b88a6eaf6730ed481812e04ffe2fd571f182e4a9ed09340e1e3d5e9702  firmware/heltec-v3/update/meshtastic.bin
+136629b9345e7d6eec5352c12f20097c15d6f809852ecb629586ae0537517fde  firmware/heltec-v3/update/partitions-dualboot-8mb-v1.bin
 c02af3a24d0c57ed39ad6048ea3a6a4de9b9007997edc0733e4d95661a0731c5  firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261010-c02af3a24d0c57ed.factory.bin
 1e97abcfa151ae04070bcfd6bb140248320bcdc1bccc27e0ea39991ac4edd8cf  firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261011-1e97abcfa151ae04.factory.bin
 fbdf23d0fd579ef127c7dc9ffa039fe08debe6f8236dfe65ab4fd3c499b4e3a7  firmware/heltec-v4/factory/ape-dualboot-heltec-v4-16mb.bin
