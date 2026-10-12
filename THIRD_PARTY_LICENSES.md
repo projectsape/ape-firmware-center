@@ -41,20 +41,21 @@ Upstream base commits of the current builds:
   `8ef996f5b474300c9f06128beff5ce36369f812e` plus the APE T147 changes described
   above. The T147 NoLoRa build comes from the same tree.
 
-#### APE additions in the Heltec V3/V4 binaries
+#### What the Heltec V3/V4 builds add: dual-boot plumbing, not application changes
 
-The Heltec builds are upstream Meshtastic and MeshCore. The only APE code compiled
-into them is the plumbing that the APE dual-boot partition layout requires:
+Both Heltec builds are upstream Meshtastic and MeshCore. The APE layout only needs
+two things from the applications: that they mount their settings from the APE
+partition table, and that they hand control back to the APE loader instead of
+finalising an OTA reboot. That is all the APE code those binaries carry — about
+twenty lines in total, across four files:
 
 - the filesystem partition label in the mount call (`tastic_fs` for Meshtastic,
-  `core_fs` for MeshCore), so settings live in the APE partition table;
-- a rollback hook (`verifyRollbackLater`) that preserves the pending OTA slot so a
-  restarted application returns to the APE loader;
-- the APE partition table and build flags, which configure the build without
-  changing application code.
+  `core_fs` for MeshCore);
+- a rollback hook (`verifyRollbackLater`) that preserves the pending OTA slot.
 
-No radio, mesh, UI or protocol logic is modified. These two additions are not
-published in this repository.
+Everything else in those builds is build configuration: the APE partition table and
+the build flags. No radio, mesh, UI or protocol logic is touched, and neither
+application is forked. For scale: the T147 changes described above are 44 files.
 
 ### Corresponding source
 
