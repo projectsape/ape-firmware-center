@@ -111,12 +111,16 @@ check blocks deployment.
 - Web app code (`src/`, `scripts/`, `index.html`) — MIT. See `LICENSE`.
 - esptool-js — Apache-2.0, npm dependency.
 - Firmware applications — Meshtastic and WadaMesh: GPL-3.0; MeshCore: MIT.
-  Upstream links are attribution, not a complete corresponding-source offer for
-  modified binaries; see the distribution limitation in `THIRD_PARTY_LICENSES.md`.
+  Only the APE T147 builds (LoRa DualBoot and NoLoRa) carry modified firmware. The
+  Heltec V3/V4 builds are upstream Meshtastic and MeshCore, unmodified in their
+  application logic, plus the dual-boot mounting and rollback additions and the APE
+  partition layout. Upstream links are attribution, not a complete
+  corresponding-source offer for the modified parts; see the distribution
+  limitation and the per-target base commits in
+  [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md).
 - APE loaders — separate components distributed as compiled binaries only; their
   implementation source is private.
-- Logo and board photography — owner rights reserved. See
-  [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md).
+- Logo and board photography — owner rights reserved.
 
 ## Troubleshooting
 

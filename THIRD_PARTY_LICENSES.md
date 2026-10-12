@@ -13,28 +13,70 @@ source.
 
 ## Firmware applications
 
-Compiled firmware keeps its upstream license:
+### GPL-3.0 — custom firmware (T147 only)
+
+All boards except the T147 ship official Meshtastic / MeshCore binaries (WadaMesh
+only applies to the T147). For those boards there is no modified source to
+publish; attribution to the upstream projects is maintained below.
+
+The Waveshare ESP32-S3 Touch 1.47 ("T147") is the exception: it ships a custom
+firmware build based on Meshtastic / WadaMesh with substantial own modifications.
+The complete corresponding source for that custom T147 build is not currently
+published in this repository.
+
+Upstream projects and licenses:
 
 - **Meshtastic** — GPL-3.0 — https://github.com/meshtastic/firmware
 - **WadaMesh** — GPL-3.0 — https://github.com/ALLFATHER-BV/wadamesh
 - **MeshCore** — MIT, Copyright (c) 2025 Scott Powell / rippleradios.com —
   https://github.com/meshcore-dev/MeshCore
 
-These applications are distributed here as compiled binaries. For the GPL-3.0
-applications, [sections 1 and 6](https://www.gnu.org/licenses/gpl-3.0.html#section6)
-require the corresponding source for the distributed work, including modifications
+Upstream base commits of the current builds:
+
+- **Heltec V3** — Meshtastic `8ef996f5b474300c9f06128beff5ce36369f812e`,
+  MeshCore `e94125987ed87497e706a0b54d1e80c709343980`
+- **Heltec V4** — Meshtastic `cb4efd8f4188303b09795969174d63441633490c`,
+  MeshCore `e94125987ed87497e706a0b54d1e80c709343980`
+- **APE T147** — WadaMesh `d68f276b0605d4c4da1be93270cbc0d1009fba0d`, Meshtastic
+  `8ef996f5b474300c9f06128beff5ce36369f812e` plus the APE T147 changes described
+  above. The T147 NoLoRa build comes from the same tree.
+
+#### APE additions in the Heltec V3/V4 binaries
+
+The Heltec builds are upstream Meshtastic and MeshCore. The only APE code compiled
+into them is the plumbing that the APE dual-boot partition layout requires:
+
+- the filesystem partition label in the mount call (`tastic_fs` for Meshtastic,
+  `core_fs` for MeshCore), so settings live in the APE partition table;
+- a rollback hook (`verifyRollbackLater`) that preserves the pending OTA slot so a
+  restarted application returns to the APE loader;
+- the APE partition table and build flags, which configure the build without
+  changing application code.
+
+No radio, mesh, UI or protocol logic is modified. These two additions are not
+published in this repository.
+
+### Corresponding source
+
+For the GPL-3.0 applications, [sections 1 and 6](https://www.gnu.org/licenses/gpl-3.0.html#section6)
+require the corresponding source of the distributed work, including modifications
 and the scripts needed to build it. For network distribution, section 6(d) permits
 that source on another server with equivalent access and clear directions beside
 the binaries.
 
-**Distribution limitation:** this repository does not currently provide that
-complete corresponding source or an exact-source download link for its modified
-GPL firmware. The upstream links above identify the projects; they do not resolve
-that gap. Publishing only binaries, retaining a private backup, or adding this
-notice does not satisfy the corresponding-source requirement.
+**Distribution limitation:** this repository publishes the binaries and metadata
+only. The upstream commits above are the source of everything APE did not touch,
+and they are downloadable from the projects' own repositories. The APE additions
+themselves are not published here: neither the T147 changes nor the two dual-boot
+additions present in the Heltec V3/V4 builds. The upstream links above identify the
+projects; they do not resolve that gap. Publishing only binaries, retaining a
+private backup, or adding this notice does not satisfy the corresponding-source
+requirement for the modified parts.
 
 The **APE loaders** are separate APE firmware components, distributed as compiled
-binaries only. Their implementation source is private.
+binaries only. Their implementation source is private. They contain no Meshtastic,
+WadaMesh or MeshCore code: they are built from APE's own code plus the Arduino
+core and the U8g2 library (BSD-2-Clause).
 
 ## Brand and product imagery
 
