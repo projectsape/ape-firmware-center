@@ -1,0 +1,55 @@
+diff --git a/src/FSCommon.h b/src/FSCommon.h
+index de4322579e..d279b1abfe 100644
+--- a/src/FSCommon.h
++++ b/src/FSCommon.h
+@@ -35,7 +35,11 @@ using namespace STM32_LittleFS_Namespace;
+ // ESP32 version
+ #include "LittleFS.h"
+ #define FSCom LittleFS
++#if defined(HELTEC_V3_DUALBOOT)
++#define FSBegin() FSCom.begin(true, "/littlefs", 10, "tastic_fs")
++#else
+ #define FSBegin() FSCom.begin(true) // format on failure
++#endif
+ #define FILE_O_WRITE "w"
+ #define FILE_O_READ "r"
+ #endif
+@@ -66,4 +70,4 @@ void setupSDCard();
+ #include <SPI.h>
+ // HSPI bus set up by setupSDCard(). Reuse this for other devices on the same bus.
+ extern SPIClass SPI_HSPI;
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/src/platform/esp32/OTAValidation.cpp b/src/platform/esp32/OTAValidation.cpp
+new file mode 100644
+index 0000000000..e63ffa543c
+--- /dev/null
++++ b/src/platform/esp32/OTAValidation.cpp
+@@ -0,0 +1,11 @@
++#include <Arduino.h>
++
++#if defined(HELTEC_V3_DUALBOOT)
++// Keep ota_1 pending so the rollback-enabled bootloader returns to the
++// factory DualBoot loader after Meshtastic restarts.
++extern "C" bool verifyRollbackLater()
++{
++    return true;
++}
++#endif
++
+diff --git a/variants/esp32s3/heltec_v3/platformio.ini b/variants/esp32s3/heltec_v3/platformio.ini
+index 2a25815f85..58dbfb56f9 100644
+--- a/variants/esp32s3/heltec_v3/platformio.ini
++++ b/variants/esp32s3/heltec_v3/platformio.ini
+@@ -12,8 +12,9 @@ custom_meshtastic_partition_scheme = 8MB
+ extends = esp32s3_base
+ board = heltec_wifi_lora_32_V3
+ board_level = pr
+-board_build.partitions = default_8MB.csv
++board_build.partitions = ../partitions/meshtastic-build.csv
+ build_flags = 
+   ${esp32s3_base.build_flags}
+   -D HELTEC_V3
++  -D HELTEC_V3_DUALBOOT
+   -I variants/esp32s3/heltec_v3

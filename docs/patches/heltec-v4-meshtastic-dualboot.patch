@@ -1,0 +1,66 @@
+diff --git a/partitions.csv b/partitions.csv
+new file mode 100644
+index 0000000000..81be15c497
+--- /dev/null
++++ b/partitions.csv
+@@ -0,0 +1,7 @@
++# Hybrid Arduino/ESP-IDF build-only view for Heltec V4 DualBoot.
++# Name,      Type, SubType, Offset,   Size,     Flags
++nvs,         data, nvs,     0x009000, 0x006000,
++otadata,     data, ota,     0x00f000, 0x002000,
++meshtas,     app,  factory, 0x020000, 0x300000,
++tastic_fs,   data, spiffs,  0xb50000, 0x4b0000,
++
+diff --git a/src/FSCommon.h b/src/FSCommon.h
+index de4322579e..2422155fc3 100644
+--- a/src/FSCommon.h
++++ b/src/FSCommon.h
+@@ -35,7 +35,11 @@ using namespace STM32_LittleFS_Namespace;
+ // ESP32 version
+ #include "LittleFS.h"
+ #define FSCom LittleFS
++#if defined(HELTEC_V4_DUALBOOT)
++#define FSBegin() FSCom.begin(true, "/littlefs", 10, "tastic_fs")
++#else
+ #define FSBegin() FSCom.begin(true) // format on failure
++#endif
+ #define FILE_O_WRITE "w"
+ #define FILE_O_READ "r"
+ #endif
+@@ -66,4 +70,4 @@ void setupSDCard();
+ #include <SPI.h>
+ // HSPI bus set up by setupSDCard(). Reuse this for other devices on the same bus.
+ extern SPIClass SPI_HSPI;
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/src/platform/esp32/OTAValidation.cpp b/src/platform/esp32/OTAValidation.cpp
+new file mode 100644
+index 0000000000..45c9f8bb4e
+--- /dev/null
++++ b/src/platform/esp32/OTAValidation.cpp
+@@ -0,0 +1,9 @@
++#include <Arduino.h>
++
++#if defined(HELTEC_V4_DUALBOOT)
++// Preserve the pending OTA state so an app restart returns to the factory loader.
++extern "C" bool verifyRollbackLater()
++{
++    return true;
++}
++#endif
+diff --git a/variants/esp32s3/heltec_v4/platformio.ini b/variants/esp32s3/heltec_v4/platformio.ini
+index c0e231903e..628bda51db 100644
+--- a/variants/esp32s3/heltec_v4/platformio.ini
++++ b/variants/esp32s3/heltec_v4/platformio.ini
+@@ -24,8 +24,10 @@ custom_meshtastic_has_mui = true
+ 
+ extends = heltec_v4_base
+ board_level = release
++board_build.partitions = partitions.csv
+ build_flags =
+   ${heltec_v4_base.build_flags}
++  -D HELTEC_V4_DUALBOOT
+   -D HELTEC_V4_OLED
+   -D USE_SSD1306 ; Heltec_v4 has an SSD1315 display (compatible with SSD1306 driver)
+   -D LED_POWER=35

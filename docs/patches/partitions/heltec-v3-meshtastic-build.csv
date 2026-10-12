@@ -1,0 +1,6 @@
+# Build-only view for stock Meshtastic 2.8.0.
+# The release partition table installs this image as ota_1 at 0x300000.
+nvs,       data, nvs,      0x9000,   0x6000
+otadata,   data, ota,      0xf000,   0x2000
+meshtas,   app,  factory,  0x20000,  0x260000
+tastic_fs, data, spiffs,   0x6b0000, 0x150000

@@ -57,6 +57,9 @@ Everything else in those builds is build configuration: the APE partition table 
 the build flags. No radio, mesh, UI or protocol logic is touched, and neither
 application is forked. For scale: the T147 changes described above are 44 files.
 
+These additions are published in [`docs/patches/`](docs/patches/), together with the
+partition tables the builds use and the upstream commit each patch applies to.
+
 ### Corresponding source
 
 For the GPL-3.0 applications, [sections 1 and 6](https://www.gnu.org/licenses/gpl-3.0.html#section6)
@@ -65,14 +68,16 @@ and the scripts needed to build it. For network distribution, section 6(d) permi
 that source on another server with equivalent access and clear directions beside
 the binaries.
 
-**Distribution limitation:** this repository publishes the binaries and metadata
-only. The upstream commits above are the source of everything APE did not touch,
-and they are downloadable from the projects' own repositories. The APE additions
-themselves are not published here: neither the T147 changes nor the two dual-boot
-additions present in the Heltec V3/V4 builds. The upstream links above identify the
-projects; they do not resolve that gap. Publishing only binaries, retaining a
-private backup, or adding this notice does not satisfy the corresponding-source
-requirement for the modified parts.
+**Corresponding source per target:**
+
+- **Heltec V3 and Heltec V4 — complete.** The source of those builds is the upstream
+  commit listed above plus the APE additions, and both are published: the additions
+  and the partition tables they use are in [`docs/patches/`](docs/patches/), each one
+  naming the base commit it applies to.
+- **APE T147 (LoRa DualBoot and NoLoRa) — not published.** These binaries are
+  distributed here with metadata only; the upstream links above identify the projects
+  but do not resolve that gap, and this notice does not substitute for the missing
+  source.
 
 The **APE loaders** are separate APE firmware components, distributed as compiled
 binaries only. Their implementation source is private. They contain no Meshtastic,
