@@ -75,16 +75,16 @@ MeshCore `v1.18.0`; Meshtastic `2.8.2.03cfb71`; Loader `UIv4.5c-20261010`.
 
 ## Heltec V3 DualBoot
 
-Release: **2026-10-11** · catalog channel: **stable**.
-Meshtastic `2.8.2`; MeshCore `1.17.1`; Loader `1.0.0`.
+Release: **2026-10-17** · catalog channel: **candidate**.
+Meshtastic `2.8.2.9f55f36`; MeshCore `v1.18.0`; Loader `1.0.0`.
 
 | Artifact | Slot | Bytes | SHA-256 |
 | --- | --- | ---: | --- |
-| `meshcore-3441d3e9b1018203.bin` | `0xA0000` | 1272800 | `3441d3e9b10182031b9b2a8cfb2849b95a2316d19cbcf7f249513d7613828fd3` |
-| `meshtastic-33be06ef07863650.bin` | `0x300000` | 2269808 | `33be06ef0786365058ab4f32092b3d66155f390c8882a0a386087e88b80825f2` |
+| `meshcore-4edeeef2349e633b.bin` | `0xA0000` | 1667632 | `4edeeef2349e633b0d77fa1264e5e6b8858c78c1176fa529d765df06956df68e` |
+| `meshtastic-75e75380993a378e.bin` | `0x300000` | 2272320 | `75e75380993a378eb1ab152faeb980bcf5da2f14312181ed5ba3fe862f0ab5c2` |
 | `partitions-dualboot-8mb-v1.bin` | `0x8000` | 4096 | `136629b9345e7d6eec5352c12f20097c15d6f809852ecb629586ae0537517fde` |
 | `loader.bin` | `0x20000` | 290976 | `3ba56a44e1d78c790f3850a4f99f82987fcec5789a68bc4e357b7353790b9bf4` |
-| `APE-Heltec-V3-DualBoot-8MB-20261011-418551b6f15453fe.factory.bin` | `0x0` | 8388608 | `418551b6f15453fe94cc3079e113c7916a1d595e6e6b5f40fb176a9ed7d777af` |
+| `APE-Heltec-V3-DualBoot-8MB-20261017-87d6579b25f922ba.factory.bin` | `0x0` | 8388608 | `87d6579b25f922bae33fa8ac7b6d16b275f725677de853acf87fe27953e635ee` |
 
 - USB Update writes MeshCore and Meshtastic. The loader is unchanged.
 - The web guard `ape-heltec-v3-dualboot-8mb-v1` names the existing production 8MB table; it does not introduce a new on-device layout.

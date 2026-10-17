@@ -1,5 +1,5 @@
 diff --git a/src/FSCommon.h b/src/FSCommon.h
-index de4322579e..d279b1abfe 100644
+index de4322579..d279b1abf 100644
 --- a/src/FSCommon.h
 +++ b/src/FSCommon.h
 @@ -35,7 +35,11 @@ using namespace STM32_LittleFS_Namespace;
@@ -23,7 +23,7 @@ index de4322579e..d279b1abfe 100644
 +#endif
 diff --git a/src/platform/esp32/OTAValidation.cpp b/src/platform/esp32/OTAValidation.cpp
 new file mode 100644
-index 0000000000..e63ffa543c
+index 000000000..e63ffa543
 --- /dev/null
 +++ b/src/platform/esp32/OTAValidation.cpp
 @@ -0,0 +1,11 @@
@@ -39,7 +39,7 @@ index 0000000000..e63ffa543c
 +#endif
 +
 diff --git a/variants/esp32s3/heltec_v3/platformio.ini b/variants/esp32s3/heltec_v3/platformio.ini
-index 2a25815f85..58dbfb56f9 100644
+index 2a25815f8..58dbfb56f 100644
 --- a/variants/esp32s3/heltec_v3/platformio.ini
 +++ b/variants/esp32s3/heltec_v3/platformio.ini
 @@ -12,8 +12,9 @@ custom_meshtastic_partition_scheme = 8MB

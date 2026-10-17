@@ -33,8 +33,8 @@ Upstream projects and licenses:
 
 Upstream base commits of the current builds:
 
-- **Heltec V3** — Meshtastic `8ef996f5b474300c9f06128beff5ce36369f812e`,
-  MeshCore `e94125987ed87497e706a0b54d1e80c709343980`
+- **Heltec V3** — Meshtastic `fad52bba0db68aff926aa02a55f4d2c4989f68dd`,
+  MeshCore `81dbae592ffad40b4212bc0b37e82b38da08f4bc`
 - **Heltec V4** — Meshtastic `fad52bba0db68aff926aa02a55f4d2c4989f68dd`,
   MeshCore `81dbae592ffad40b4212bc0b37e82b38da08f4bc`
 - **APE T147 LoRa DualBoot** — WadaMesh `94baf4deacecd06aad7b2d1962fac58d7be0fc90`,

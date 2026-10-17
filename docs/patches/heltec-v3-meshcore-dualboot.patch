@@ -1,10 +1,10 @@
 diff --git a/examples/companion_radio/main.cpp b/examples/companion_radio/main.cpp
-index 89f0e6cb..9c5b1157 100644
+index 839d4958..dfab0174 100644
 --- a/examples/companion_radio/main.cpp
 +++ b/examples/companion_radio/main.cpp
-@@ -171,7 +171,11 @@ void setup() {
-     #endif
-   );
+@@ -178,7 +178,11 @@ void setup() {
+   store.begin();
+   the_mesh.begin();
  #elif defined(ESP32)
 -  SPIFFS.begin(true);
 +  #if defined(HELTEC_V3_DUALBOOT)
@@ -13,8 +13,8 @@ index 89f0e6cb..9c5b1157 100644
 +    SPIFFS.begin(true);
 +  #endif
    store.begin();
-   the_mesh.begin(
-     #ifdef DISPLAY_CLASS
+   the_mesh.begin();
+ #else
 diff --git a/src/OTAValidation.cpp b/src/OTAValidation.cpp
 new file mode 100644
 index 00000000..416b1dc8
@@ -33,7 +33,7 @@ index 00000000..416b1dc8
 +#endif
 +
 diff --git a/variants/heltec_v3/platformio.ini b/variants/heltec_v3/platformio.ini
-index 65e636eb..cc94da90 100644
+index 06c02856..e813b8b2 100644
 --- a/variants/heltec_v3/platformio.ini
 +++ b/variants/heltec_v3/platformio.ini
 @@ -158,8 +158,10 @@ lib_deps =

@@ -9,9 +9,9 @@
    "firmware": "APE DualBoot",
    "chipFamily": "ESP32-S3",
    "flashSize": "8MB",
-   "version": "2.8.2",
-   "channel": "stable",
-   "releaseDate": "2026-10-11",
+   "version": "2.8.2.9f55f36",
+   "channel": "candidate",
+   "releaseDate": "2026-10-17",
    "image": "assets/boards/heltec-v3.webp",
    "requiresExternalRadio": false,
    "wiring": null,
@@ -26,9 +26,9 @@
     "parts": [
      {
       "name": "factory",
-      "file": "firmware/heltec-v3/factory/APE-Heltec-V3-DualBoot-8MB-20261011-418551b6f15453fe.factory.bin",
+      "file": "firmware/heltec-v3/factory/APE-Heltec-V3-DualBoot-8MB-20261017-87d6579b25f922ba.factory.bin",
       "offset": "0x0",
-      "sha256": "418551b6f15453fe94cc3079e113c7916a1d595e6e6b5f40fb176a9ed7d777af"
+      "sha256": "87d6579b25f922bae33fa8ac7b6d16b275f725677de853acf87fe27953e635ee"
      }
     ]
    },
@@ -37,15 +37,15 @@
     "parts": [
      {
       "name": "meshcore",
-      "file": "firmware/heltec-v3/update/meshcore-3441d3e9b1018203.bin",
+      "file": "firmware/heltec-v3/update/meshcore-4edeeef2349e633b.bin",
       "offset": "0xA0000",
-      "sha256": "3441d3e9b10182031b9b2a8cfb2849b95a2316d19cbcf7f249513d7613828fd3"
+      "sha256": "4edeeef2349e633b0d77fa1264e5e6b8858c78c1176fa529d765df06956df68e"
      },
      {
       "name": "meshtastic",
-      "file": "firmware/heltec-v3/update/meshtastic-33be06ef07863650.bin",
+      "file": "firmware/heltec-v3/update/meshtastic-75e75380993a378e.bin",
       "offset": "0x300000",
-      "sha256": "33be06ef0786365058ab4f32092b3d66155f390c8882a0a386087e88b80825f2"
+      "sha256": "75e75380993a378eb1ab152faeb980bcf5da2f14312181ed5ba3fe862f0ab5c2"
      }
     ],
     "loaderChanged": false,
@@ -62,14 +62,14 @@
    "loaderVersion": "1.0.0",
    "provenance": {
     "meshtastic": {
-     "version": "2.8.2",
+     "version": "2.8.2.9f55f36",
      "source": "https://github.com/meshtastic/firmware",
-     "commit": "7c80205"
+     "commit": "9f55f36ac10f69b05c1b4d4c2a7a82446983aafb"
     },
     "meshcore": {
-     "version": "1.17.1",
+     "version": "v1.18.0",
      "source": "https://github.com/meshcore-dev/MeshCore",
-     "commit": "14b9f252"
+     "commit": "6171703a10191a815a60bd7b22fb2678ddba1e92"
     },
     "loader": {
      "version": "1.0.0",
