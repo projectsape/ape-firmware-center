@@ -35,11 +35,12 @@ Upstream base commits of the current builds:
 
 - **Heltec V3** — Meshtastic `8ef996f5b474300c9f06128beff5ce36369f812e`,
   MeshCore `e94125987ed87497e706a0b54d1e80c709343980`
-- **Heltec V4** — Meshtastic `cb4efd8f4188303b09795969174d63441633490c`,
-  MeshCore `e94125987ed87497e706a0b54d1e80c709343980`
-- **APE T147** — WadaMesh `d68f276b0605d4c4da1be93270cbc0d1009fba0d`, Meshtastic
-  `8ef996f5b474300c9f06128beff5ce36369f812e` plus the APE T147 changes described
-  above. The T147 NoLoRa build comes from the same tree.
+- **Heltec V4** — Meshtastic `fad52bba0db68aff926aa02a55f4d2c4989f68dd`,
+  MeshCore `81dbae592ffad40b4212bc0b37e82b38da08f4bc`
+- **APE T147 LoRa DualBoot** — WadaMesh `94baf4deacecd06aad7b2d1962fac58d7be0fc90`,
+  Meshtastic `fad52bba0db68aff926aa02a55f4d2c4989f68dd` plus the APE T147 changes described above.
+- **T147 NoLoRa** — unchanged in this round; its previously published build and
+  source-availability notice remain unchanged.
 
 #### What the Heltec V3/V4 builds add: dual-boot plumbing, not application changes
 

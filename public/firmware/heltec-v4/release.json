@@ -16,9 +16,9 @@
     "acceptedOn": "2026-10-10"
   },
   "factory": {
-    "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261011-1e97abcfa151ae04.factory.bin",
+    "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261017-2b2f5f8250147e26.factory.bin",
     "bytes": 16777216,
-    "sha256": "1e97abcfa151ae04070bcfd6bb140248320bcdc1bccc27e0ea39991ac4edd8cf"
+    "sha256": "2b2f5f8250147e263d09edb43adbe8b352f0d4aa8f72ddad5b7fb648cc71f7b2"
   },
   "partitionTable": {
     "file": "firmware/heltec-v4/update/partitions-ota-v1.bin",
@@ -34,27 +34,27 @@
   },
   "components": {
     "meshcore": {
-      "file": "firmware/heltec-v4/update/meshcore/meshcore-8c540a54da6e2991.bin",
-      "bytes": 1270480,
-      "sha256": "8c540a54da6e2991f7a26260e2031bc15788662989f2e4d5ac0d43fa773309f1",
+      "file": "firmware/heltec-v4/update/meshcore/meshcore-3f1e12d19e693dc0.bin",
+      "bytes": 1665872,
+      "sha256": "3f1e12d19e693dc05ab272427cb26e2baada9705bfe3d34ecb20f9f2bc93124a",
       "manifest": "firmware/heltec-v4/update/meshcore/manifest.json",
-      "version": "v1.17.1",
-      "commit": "a366955cb2f67b8e6842d4f00d2b6a554dddd88a",
+      "version": "v1.18.0",
+      "commit": "81dbae592ffad40b4212bc0b37e82b38da08f4bc",
       "espAppVersion": "esp-idf: v4.4.7 38eeba213a",
       "offset": "0x1a0000",
       "slotSize": "0x200000"
     },
     "meshtastic": {
-      "file": "firmware/heltec-v4/update/meshtastic/meshtastic-58d5aa7b98a14afc.bin",
-      "bytes": 2288320,
-      "sha256": "58d5aa7b98a14afc7aaa0dcc7b1a084402454ed67954c178eee2681535e0b532",
+      "file": "firmware/heltec-v4/update/meshtastic/meshtastic-b9bceb7350a4dee2.bin",
+      "bytes": 2290160,
+      "sha256": "b9bceb7350a4dee28394a639a0ce9ac7199f23d909b19bc82da9441b5259ae2e",
       "manifest": "firmware/heltec-v4/update/meshtastic/manifest.json",
-      "version": "2.8.2.2a8d5a2",
-      "commit": "9015b2213f4060bdf3f59539698ffbfe8234ebec",
-      "espAppVersion": "v2.7.23.b246bcd-1090-g2a8d5a245",
+      "version": "2.8.2.03cfb71",
+      "commit": "fad52bba0db68aff926aa02a55f4d2c4989f68dd",
+      "espAppVersion": "v2.7.23.b246bcd-1193-g03cfb7135",
       "offset": "0x3a0000",
       "slotSize": "0x300000"
     }
   },
-  "approval": "owner-authorized-heltec-v4-dualboot-ota-publication-20261010;owner-authorized-v4-loader-usb-identity-20261010;owner-authorized-v4-usb-layout-guard-20261010;owner-authorized-v4-ui45c-t147-parity-and-publication-20261010;owner-authorized-20261011-v4-and-t147-dualboot-ota-round-publication"
+  "approval": "owner-authorized-heltec-v4-dualboot-ota-publication-20261010;owner-authorized-v4-loader-usb-identity-20261010;owner-authorized-v4-usb-layout-guard-20261010;owner-authorized-v4-ui45c-t147-parity-and-publication-20261010;owner-authorized-20261011-v4-and-t147-dualboot-ota-round-publication;owner-authorized-20261017-app-round"
 }

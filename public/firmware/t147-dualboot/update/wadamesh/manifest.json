@@ -1,15 +1,15 @@
 {
   "schema_version": 3,
-  "version": "v1.17.4-touch",
-  "app_version": "v1.17.4-touch",
-  "commit": "d68f276b0605d4c4da1be93270cbc0d1009fba0d",
+  "version": "v1.18.0.1-touch",
+  "app_version": "v1.18.0.1-touch",
+  "commit": "94baf4deacecd06aad7b2d1962fac58d7be0fc90",
   "health_protocol": 0,
   "board": "waveshare-esp32-s3-touch-lcd-1.47-lora-dualboot",
   "component": "wadamesh",
   "layout": "ape-t147-dualboot-ota-v2",
-  "size": 3384720,
-  "sha256": "7f461cb1e46ef88d824a2406190c4ec22da0b8819e072b93f95952ebb7343f81",
-  "firmware_url": "wadamesh-7f461cb1e46ef88d.bin",
+  "size": 3412688,
+  "sha256": "82b3a0de49d8c1dadf58be85927c4ef079c0a2f14bb7452097529820b912f31c",
+  "firmware_url": "wadamesh-82b3a0de49d8c1da.bin",
   "notes": "USB=OTA; same bytes as factory and USB; dualboot layout unchanged.",
-  "signature": "MEQCH1It0lpm0KbpgBIk8zuniYdrQoHkBLURW8dsWNIOptYCIQDcqNPShRHrT7HdXEjSpBwe4lfYGh/Lhb4P5f1IR8I+Hw=="
+  "signature": "MEUCIQDP4L6kywSg5+rtl/4jbWWvbV2IGLlBVjXszUZbCQjsVgIgeHerH+GwP0DWOSRpWRAm46BsEE1GH9Mor+FXMTkiurk="
 }

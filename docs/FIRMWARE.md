@@ -11,16 +11,16 @@ is still awaiting that pass.
 
 ## Waveshare T147 LoRa DualBoot — WadaMesh + Meshtastic + OTA
 
-Release: **2026-10-11** · catalog channel: **stable**.
-WadaMesh `v1.17.4-touch`; Meshtastic `2.8.2.18ec962`; Loader `Legacy-20261007`.
+Release: **2026-10-17** · catalog channel: **candidate**.
+WadaMesh `v1.18.0.1-touch` (`beta_96`); Meshtastic `2.8.2.e1fbf7f`; Loader `Legacy-20261007`.
 
 | Artifact | Slot | Bytes | SHA-256 |
 | --- | --- | ---: | --- |
-| `wadamesh-7f461cb1e46ef88d.bin` | `0x1a0000` | 3384720 | `7f461cb1e46ef88d824a2406190c4ec22da0b8819e072b93f95952ebb7343f81` |
-| `meshtastic-50e45bfec976f29e.bin` | `0x520000` | 3754608 | `50e45bfec976f29ea15b4ed1d527a0515af53f4dfe423e7644c5837fc7be7876` |
+| `wadamesh-82b3a0de49d8c1da.bin` | `0x1a0000` | 3412688 | `82b3a0de49d8c1dadf58be85927c4ef079c0a2f14bb7452097529820b912f31c` |
+| `meshtastic-b87d24d681598159.bin` | `0x520000` | 3756224 | `b87d24d6815981593e35d51a0b05b6b8e92eeed7c6c747aa7db6327b1cd46872` |
 | `partitions-ota-v2.bin` | `0x8000` | 4096 | `c7e60fcb1a19ecb84df674a908c8e48744e3f5fb8a81fa19fb4f341b07db4cfa` |
 | `loader-3b44fb49fe56adf2.bin` | `0x20000` | 1289104 | `3b44fb49fe56adf2e237ce232eb261dd1a5988d970ff8c9a7e26bd6a04051e61` |
-| `APE-T147-LoRa-DualBoot-OTA-20261011-2b5a39c9cd85baa0.factory.bin` | `0x0` | 16777216 | `2b5a39c9cd85baa085bdb927b07f8e6ff5218700ed9eaaa5b481aa9e84a5009d` |
+| `APE-T147-LoRa-DualBoot-OTA-20261017-bfbc1fe322b1705f.factory.bin` | `0x0` | 16777216 | `bfbc1fe322b1705f1691e188bf66598900b03f8f5c9f29f3810fc7da0f7a84c3` |
 
 - USB Update writes WadaMesh and Meshtastic. The loader is unchanged.
 - Layout `ape-t147-dualboot-ota-v2`; the installed partition sector is checked before each USB update.
@@ -44,16 +44,16 @@ Meshtastic `2.8.2`.
 
 ## Heltec V4 DualBoot with OTA
 
-Release: **2026-10-11** · catalog channel: **stable**.
-MeshCore `v1.17.1`; Meshtastic `2.8.2.2a8d5a2`; Loader `UIv4.5c-20261010`.
+Release: **2026-10-17** · catalog channel: **candidate**.
+MeshCore `v1.18.0`; Meshtastic `2.8.2.03cfb71`; Loader `UIv4.5c-20261010`.
 
 | Artifact | Slot | Bytes | SHA-256 |
 | --- | --- | ---: | --- |
-| `meshcore-8c540a54da6e2991.bin` | `0x1a0000` | 1270480 | `8c540a54da6e2991f7a26260e2031bc15788662989f2e4d5ac0d43fa773309f1` |
-| `meshtastic-58d5aa7b98a14afc.bin` | `0x3a0000` | 2288320 | `58d5aa7b98a14afc7aaa0dcc7b1a084402454ed67954c178eee2681535e0b532` |
+| `meshcore-3f1e12d19e693dc0.bin` | `0x1a0000` | 1665872 | `3f1e12d19e693dc05ab272427cb26e2baada9705bfe3d34ecb20f9f2bc93124a` |
+| `meshtastic-b9bceb7350a4dee2.bin` | `0x3a0000` | 2290160 | `b9bceb7350a4dee28394a639a0ce9ac7199f23d909b19bc82da9441b5259ae2e` |
 | `partitions-ota-v1.bin` | `0x8000` | 4096 | `23353614a32bd5d4213e986be966c09076ba94232b740097d2f9089f89779ba1` |
 | `loader-2aa4b3da757219c3.bin` | `0x20000` | 1012048 | `2aa4b3da757219c312033fad2d9072c7e1af197d7780bfe2dc8f2eb9a8e62d75` |
-| `APE-Heltec-V4-DualBoot-OTA-20261011-1e97abcfa151ae04.factory.bin` | `0x0` | 16777216 | `1e97abcfa151ae04070bcfd6bb140248320bcdc1bccc27e0ea39991ac4edd8cf` |
+| `APE-Heltec-V4-DualBoot-OTA-20261017-2b2f5f8250147e26.factory.bin` | `0x0` | 16777216 | `2b2f5f8250147e263d09edb43adbe8b352f0d4aa8f72ddad5b7fb648cc71f7b2` |
 
 - USB Update writes MeshCore and Meshtastic. The loader is unchanged.
 - Layout `ape-heltec-v4-dualboot-ota-v1`; the installed partition sector is checked before each USB update.

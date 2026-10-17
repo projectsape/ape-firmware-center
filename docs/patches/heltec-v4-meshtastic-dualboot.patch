@@ -1,6 +1,6 @@
 diff --git a/partitions.csv b/partitions.csv
 new file mode 100644
-index 0000000000..81be15c497
+index 0000000000..390ae5c820
 --- /dev/null
 +++ b/partitions.csv
 @@ -0,0 +1,7 @@
@@ -8,7 +8,7 @@ index 0000000000..81be15c497
 +# Name,      Type, SubType, Offset,   Size,     Flags
 +nvs,         data, nvs,     0x009000, 0x006000,
 +otadata,     data, ota,     0x00f000, 0x002000,
-+meshtas,     app,  factory, 0x020000, 0x300000,
++meshtas,     app,  factory, 0x3a0000, 0x300000,
 +tastic_fs,   data, spiffs,  0xb50000, 0x4b0000,
 +
 diff --git a/src/FSCommon.h b/src/FSCommon.h

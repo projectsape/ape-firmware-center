@@ -9,8 +9,8 @@ from: every other file in those builds is upstream, unmodified.
 | --- | --- | --- |
 | `heltec-v3-meshtastic-dualboot.patch` | [meshtastic/firmware](https://github.com/meshtastic/firmware) | `8ef996f5b474300c9f06128beff5ce36369f812e` |
 | `heltec-v3-meshcore-dualboot.patch` | [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore) | `e94125987ed87497e706a0b54d1e80c709343980` |
-| `heltec-v4-meshtastic-dualboot.patch` | [meshtastic/firmware](https://github.com/meshtastic/firmware) | `cb4efd8f4188303b09795969174d63441633490c` |
-| `heltec-v4-meshcore-dualboot.patch` | [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore) | `e94125987ed87497e706a0b54d1e80c709343980` |
+| `heltec-v4-meshtastic-dualboot.patch` | [meshtastic/firmware](https://github.com/meshtastic/firmware) | `fad52bba0db68aff926aa02a55f4d2c4989f68dd` |
+| `heltec-v4-meshcore-dualboot.patch` | [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore) | `81dbae592ffad40b4212bc0b37e82b38da08f4bc` |
 
 What the patches do — and nothing else:
 
@@ -37,7 +37,7 @@ build/
 ```
 
 Copy the CSVs from `partitions/` here under those names, then build the environment
-the patch edits: `heltec_v3` or `heltec_v4` for Meshtastic,
+the patch edits: `heltec-v3` or `heltec-v4` for Meshtastic,
 `Heltec_v3_companion_radio_ble` or `heltec_v4_companion_radio_ble` for MeshCore.
 
 The Heltec V4 Meshtastic patch adds `partitions.csv` at the tree root, which is the
