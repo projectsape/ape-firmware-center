@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-17",
+ "generatedAt": "2026-10-24",
  "devices": [
   {
    "id": "heltec-v3",
@@ -87,9 +87,9 @@
    "chipFamily": "ESP32-S3",
    "flashSize": "16MB",
    "psramSize": "2MB QUAD/QSPI",
-   "version": "2.8.2.03cfb71",
+   "version": "2.8.2.090ab6a",
    "channel": "candidate",
-   "releaseDate": "2026-10-17",
+   "releaseDate": "2026-10-24",
    "image": "assets/boards/heltec-v4.webp",
    "requiresExternalRadio": false,
    "wiring": null,
@@ -104,9 +104,9 @@
     "parts": [
      {
       "name": "factory",
-      "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261017-2b2f5f8250147e26.factory.bin",
+      "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261024-2bc1dcb251889493.factory.bin",
       "offset": "0x0",
-      "sha256": "2b2f5f8250147e263d09edb43adbe8b352f0d4aa8f72ddad5b7fb648cc71f7b2"
+      "sha256": "2bc1dcb251889493614d7b8fb261d63363672d577558901830710ed9408d2a32"
      }
     ]
    },
@@ -129,8 +129,8 @@
      },
      {
       "name": "meshtastic",
-      "file": "firmware/heltec-v4/update/meshtastic/meshtastic-b9bceb7350a4dee2.bin",
-      "sha256": "b9bceb7350a4dee28394a639a0ce9ac7199f23d909b19bc82da9441b5259ae2e",
+      "file": "firmware/heltec-v4/update/meshtastic/meshtastic-f017b1492d005b41.bin",
+      "sha256": "f017b1492d005b4107415a9e81b49de56d8f4909105cc7059031e82951910499",
       "offset": "0x3a0000"
      }
     ],
@@ -145,8 +145,8 @@
      "source": "https://github.com/meshcore-dev/MeshCore"
     },
     "meshtastic": {
-     "version": "2.8.2.03cfb71",
-     "commit": "fad52bba0db68aff926aa02a55f4d2c4989f68dd",
+     "version": "2.8.2.090ab6a",
+     "commit": "95ff510f476e238f60c96d0debb355b2fba69449",
      "source": "https://github.com/meshtastic/firmware"
     },
     "loader": {
@@ -193,9 +193,9 @@
    "flashSize": "16MB",
    "psramSize": "8MB",
    "display": "1.47-inch 172\u00d7320 capacitive touch LCD",
-   "version": "2.8.2.e1fbf7f",
+   "version": "2.8.2.c3946c1",
    "channel": "candidate",
-   "releaseDate": "2026-10-17",
+   "releaseDate": "2026-10-24",
    "image": "assets/boards/t147.webp",
    "requiresExternalRadio": true,
    "wiring": {
@@ -255,8 +255,8 @@
     "eraseAll": true,
     "parts": [
      {
-      "file": "firmware/t147-dualboot/factory/APE-T147-LoRa-DualBoot-OTA-20261017-bfbc1fe322b1705f.factory.bin",
-      "sha256": "bfbc1fe322b1705f1691e188bf66598900b03f8f5c9f29f3810fc7da0f7a84c3",
+      "file": "firmware/t147-dualboot/factory/APE-T147-LoRa-DualBoot-OTA-20261024-eb0f4e2403124477.factory.bin",
+      "sha256": "eb0f4e2403124477988ed8d3604847a0059c1ef900d4520a96d6e66a37819921",
       "name": "factory",
       "offset": "0x0"
      }
@@ -275,14 +275,14 @@
     "parts": [
      {
       "name": "wadamesh",
-      "file": "firmware/t147-dualboot/update/wadamesh/wadamesh-82b3a0de49d8c1da.bin",
-      "sha256": "82b3a0de49d8c1dadf58be85927c4ef079c0a2f14bb7452097529820b912f31c",
+      "file": "firmware/t147-dualboot/update/wadamesh/wadamesh-5428d5dc11b46d5e.bin",
+      "sha256": "5428d5dc11b46d5e163bc467dc93ee83f45e52058a4f324d262201a03c775370",
       "offset": "0x1a0000"
      },
      {
       "name": "meshtastic",
-      "file": "firmware/t147-dualboot/update/meshtastic/meshtastic-b87d24d681598159.bin",
-      "sha256": "b87d24d6815981593e35d51a0b05b6b8e92eeed7c6c747aa7db6327b1cd46872",
+      "file": "firmware/t147-dualboot/update/meshtastic/meshtastic-35841cca82017f6a.bin",
+      "sha256": "35841cca82017f6a925070243a52daaa0d30c87f1ebe1f85bfcde90379e43425",
       "offset": "0x520000"
      }
     ],
@@ -291,12 +291,12 @@
    "provenance": {
     "wadamesh": {
      "version": "v1.18.0.1-touch",
-     "commit": "94baf4deacecd06aad7b2d1962fac58d7be0fc90",
+     "commit": "ce0b6380249f742d56f052b5e346a91d2ad55a82",
      "source": "https://github.com/ALLFATHER-BV/wadamesh"
     },
     "meshtastic": {
-     "version": "2.8.2.e1fbf7f",
-     "commit": "fad52bba0db68aff926aa02a55f4d2c4989f68dd",
+     "version": "2.8.2.c3946c1",
+     "commit": "95ff510f476e238f60c96d0debb355b2fba69449",
      "source": "https://github.com/meshtastic/firmware"
     },
     "loader": {

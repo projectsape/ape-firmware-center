@@ -35,10 +35,10 @@ Upstream base commits of the current builds:
 
 - **Heltec V3** — Meshtastic `fad52bba0db68aff926aa02a55f4d2c4989f68dd`,
   MeshCore `81dbae592ffad40b4212bc0b37e82b38da08f4bc`
-- **Heltec V4** — Meshtastic `fad52bba0db68aff926aa02a55f4d2c4989f68dd`,
+- **Heltec V4** — Meshtastic `95ff510f476e238f60c96d0debb355b2fba69449`,
   MeshCore `81dbae592ffad40b4212bc0b37e82b38da08f4bc`
-- **APE T147 LoRa DualBoot** — WadaMesh `94baf4deacecd06aad7b2d1962fac58d7be0fc90`,
-  Meshtastic `fad52bba0db68aff926aa02a55f4d2c4989f68dd` plus the APE T147 changes described above.
+- **APE T147 LoRa DualBoot** — WadaMesh `ce0b6380249f742d56f052b5e346a91d2ad55a82`,
+  Meshtastic `95ff510f476e238f60c96d0debb355b2fba69449` plus the APE T147 changes described above.
 - **T147 NoLoRa** — unchanged in this round; its previously published build and
   source-availability notice remain unchanged.
 
