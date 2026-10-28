@@ -7,7 +7,7 @@ from: every other file in those builds is upstream, unmodified.
 
 | Patch | Upstream project | Base commit |
 | --- | --- | --- |
-| `heltec-v3-meshtastic-dualboot.patch` | [meshtastic/firmware](https://github.com/meshtastic/firmware) | `95ff510f476e238f60c96d0debb355b2fba69449` |
+| `heltec-v3-meshtastic-dualboot.patch` | [meshtastic/firmware](https://github.com/meshtastic/firmware) | `eaba8b95bebab04c4f13a27b63e000ebdc1e5fac` |
 | `heltec-v3-meshcore-dualboot.patch` | [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore) | `81dbae592ffad40b4212bc0b37e82b38da08f4bc` |
 | `heltec-v4-meshtastic-dualboot.patch` | [meshtastic/firmware](https://github.com/meshtastic/firmware) | `eaba8b95bebab04c4f13a27b63e000ebdc1e5fac` |
 | `heltec-v4-meshcore-dualboot.patch` | [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore) | `81dbae592ffad40b4212bc0b37e82b38da08f4bc` |
@@ -47,7 +47,7 @@ table that build uses; no external CSV is needed for it.
 
 ```sh
 git clone https://github.com/meshtastic/firmware && cd firmware
-git checkout 95ff510f476e238f60c96d0debb355b2fba69449
+git checkout eaba8b95bebab04c4f13a27b63e000ebdc1e5fac
 git apply --whitespace=nowarn ../heltec-v3-meshtastic-dualboot.patch
 ```
 

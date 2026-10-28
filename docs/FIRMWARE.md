@@ -30,13 +30,13 @@ WadaMesh `v1.18.0.1-touch` (`beta_100`); Meshtastic `2.8.2.add99ff`; Loader `Leg
 
 ## Waveshare T147 NoLoRa — Meshtastic
 
-Release: **2026-10-24** · catalog channel: **stable**.
-Meshtastic `2.8.2.a5720be`.
+Release: **2026-10-28** · catalog channel: **candidate**.
+Meshtastic `2.8.2.64352a5`.
 
 | Artifact | Slot | Bytes | SHA-256 |
 | --- | --- | ---: | --- |
-| `meshtastic-eeb58c95b477d08e.bin` | `0x10000` | 3725984 | `eeb58c95b477d08e111cdab7a8f9787a51bcbbf79cc4f01a209f7a0f8a89eff8` |
-| `T147-NoLoRa-20261024-7a6c2242833f57cd.factory.bin` | `0x0` | 3791520 | `7a6c2242833f57cd4da1764bcd3956d838be051288c54f5048b2576ee11bca3c` |
+| `meshtastic-f3f1d2332e0a9acd.bin` | `0x10000` | 3726512 | `f3f1d2332e0a9acdc083d6468efe2e5b9f6fc4447e829547f88b5f5e653d6154` |
+| `T147-NoLoRa-20261028-15289b8e6cb0863f.factory.bin` | `0x0` | 3792048 | `15289b8e6cb0863f2d4cde14ff4033f26ac6c46e9a41d876494236d8f817c042` |
 | `T147-NoLoRa.littlefs.bin` | `0xC90000` | 3538944 | `2025b200ef42e636a5258f8db9f734a855dfb91a8a36c3c2bbdc5ea2f0ce92c6` |
 
 - USB Update writes the application at `0x10000`, preserving NVS and the filesystem.
@@ -75,16 +75,16 @@ Meshtastic `2.8.2.9a412fc`; MeshCore `v1.18.0`; Loader `UIv4.5c-20261010`.
 
 ## Heltec V3 DualBoot
 
-Release: **2026-10-24** · catalog channel: **candidate**.
-Meshtastic `2.8.2.8d541e3`; MeshCore `v1.18.0`; Loader `1.0.0`.
+Release: **2026-10-28** · catalog channel: **candidate**.
+Meshtastic `2.8.2.38f41a9`; MeshCore `v1.18.0`; Loader `1.0.0`.
 
 | Artifact | Slot | Bytes | SHA-256 |
 | --- | --- | ---: | --- |
 | `meshcore-4edeeef2349e633b.bin` | `0xA0000` | 1667632 | `4edeeef2349e633b0d77fa1264e5e6b8858c78c1176fa529d765df06956df68e` |
-| `meshtastic-66fdc8d92b599d13.bin` | `0x300000` | 2277712 | `66fdc8d92b599d1395dccc2c220d776c516cdaa09e2b63980a5649561b8ac664` |
+| `meshtastic-4dc14dae9ac6ad00.bin` | `0x300000` | 2278144 | `4dc14dae9ac6ad00645607686ba01434f4205b0853d76539f55327a92b201a57` |
 | `partitions-dualboot-8mb-v1.bin` | `0x8000` | 4096 | `136629b9345e7d6eec5352c12f20097c15d6f809852ecb629586ae0537517fde` |
 | `loader.bin` | `0x20000` | 290976 | `3ba56a44e1d78c790f3850a4f99f82987fcec5789a68bc4e357b7353790b9bf4` |
-| `APE-Heltec-V3-DualBoot-8MB-20261024-09b33969ef103fbe.factory.bin` | `0x0` | 8388608 | `09b33969ef103fbee004c013a973ed0a9a48866f24829838e99e2e58d5f58040` |
+| `APE-Heltec-V3-DualBoot-8MB-20261028-2f2a8f32d785ccfc.factory.bin` | `0x0` | 8388608 | `2f2a8f32d785ccfc80bc398feeadf35c70184db9a089673f035dfa5893847ad1` |
 
 - USB Update writes MeshCore and Meshtastic. The loader is unchanged.
 - The web guard `ape-heltec-v3-dualboot-8mb-v1` names the existing production 8MB table; it does not introduce a new on-device layout.

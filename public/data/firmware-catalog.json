@@ -9,9 +9,9 @@
    "firmware": "APE DualBoot",
    "chipFamily": "ESP32-S3",
    "flashSize": "8MB",
-   "version": "2.8.2.8d541e3",
+   "version": "2.8.2.38f41a9",
    "channel": "candidate",
-   "releaseDate": "2026-10-24",
+   "releaseDate": "2026-10-28",
    "image": "assets/boards/heltec-v3.webp",
    "requiresExternalRadio": false,
    "wiring": null,
@@ -26,9 +26,9 @@
     "parts": [
      {
       "name": "factory",
-      "file": "firmware/heltec-v3/factory/APE-Heltec-V3-DualBoot-8MB-20261024-09b33969ef103fbe.factory.bin",
+      "file": "firmware/heltec-v3/factory/APE-Heltec-V3-DualBoot-8MB-20261028-2f2a8f32d785ccfc.factory.bin",
       "offset": "0x0",
-      "sha256": "09b33969ef103fbee004c013a973ed0a9a48866f24829838e99e2e58d5f58040"
+      "sha256": "2f2a8f32d785ccfc80bc398feeadf35c70184db9a089673f035dfa5893847ad1"
      }
     ]
    },
@@ -43,9 +43,9 @@
      },
      {
       "name": "meshtastic",
-      "file": "firmware/heltec-v3/update/meshtastic-66fdc8d92b599d13.bin",
+      "file": "firmware/heltec-v3/update/meshtastic-4dc14dae9ac6ad00.bin",
       "offset": "0x300000",
-      "sha256": "66fdc8d92b599d1395dccc2c220d776c516cdaa09e2b63980a5649561b8ac664"
+      "sha256": "4dc14dae9ac6ad00645607686ba01434f4205b0853d76539f55327a92b201a57"
      }
     ],
     "loaderChanged": false,
@@ -62,9 +62,9 @@
    "loaderVersion": "1.0.0",
    "provenance": {
     "meshtastic": {
-     "version": "2.8.2.8d541e3",
+     "version": "2.8.2.38f41a9",
      "source": "https://github.com/meshtastic/firmware",
-     "commit": "8d541e3ed5284deb4d5fbbb15fa532d59650e8e6"
+     "commit": "38f41a9122c6dc948b297bc5a557e8a06eafce5e"
     },
     "meshcore": {
      "version": "v1.18.0",
@@ -345,9 +345,9 @@
    "flashSize": "16MB",
    "psramSize": "8MB",
    "display": "1.47-inch 172\u00d7320 capacitive touch LCD",
-   "version": "2.8.2.a5720be",
-   "channel": "stable",
-   "releaseDate": "2026-10-24",
+   "version": "2.8.2.64352a5",
+   "channel": "candidate",
+   "releaseDate": "2026-10-28",
    "image": "assets/boards/t147.webp",
    "requiresExternalRadio": false,
    "wiring": null,
@@ -356,9 +356,9 @@
     "parts": [
      {
       "name": "factory",
-      "file": "firmware/t147-nolora/factory/T147-NoLoRa-20261024-7a6c2242833f57cd.factory.bin",
+      "file": "firmware/t147-nolora/factory/T147-NoLoRa-20261028-15289b8e6cb0863f.factory.bin",
       "offset": "0x0",
-      "sha256": "7a6c2242833f57cd4da1764bcd3956d838be051288c54f5048b2576ee11bca3c"
+      "sha256": "15289b8e6cb0863f2d4cde14ff4033f26ac6c46e9a41d876494236d8f817c042"
      },
      {
       "name": "littlefs",
@@ -373,18 +373,18 @@
     "parts": [
      {
       "name": "meshtastic",
-      "file": "firmware/t147-nolora/update/meshtastic-eeb58c95b477d08e.bin",
+      "file": "firmware/t147-nolora/update/meshtastic-f3f1d2332e0a9acd.bin",
       "offset": "0x10000",
-      "sha256": "eeb58c95b477d08e111cdab7a8f9787a51bcbbf79cc4f01a209f7a0f8a89eff8"
+      "sha256": "f3f1d2332e0a9acdc083d6468efe2e5b9f6fc4447e829547f88b5f5e653d6154"
      }
     ],
     "loaderChanged": false
    },
    "provenance": {
     "meshtastic": {
-     "version": "2.8.2.a5720be",
+     "version": "2.8.2.64352a5",
      "source": "https://github.com/meshtastic/firmware",
-     "commit": "a5720be8b09a9d24d71204cad56967cf6d47e40e"
+     "commit": "64352a5fa3a8b241fc9ed43981ddd2cf641be0c5"
     }
    }
   }
