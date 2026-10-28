@@ -16,9 +16,9 @@
     "acceptedOn": "2026-10-10"
   },
   "factory": {
-    "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261024-2bc1dcb251889493.factory.bin",
+    "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261028-b5700f3388ec5e8d.factory.bin",
     "bytes": 16777216,
-    "sha256": "2bc1dcb251889493614d7b8fb261d63363672d577558901830710ed9408d2a32"
+    "sha256": "b5700f3388ec5e8d017085bba7bf7d5dc51382ddc7e310d4107fa4227559a4c9"
   },
   "partitionTable": {
     "file": "firmware/heltec-v4/update/partitions-ota-v1.bin",
@@ -45,16 +45,16 @@
       "slotSize": "0x200000"
     },
     "meshtastic": {
-      "file": "firmware/heltec-v4/update/meshtastic/meshtastic-f017b1492d005b41.bin",
-      "bytes": 2296064,
-      "sha256": "f017b1492d005b4107415a9e81b49de56d8f4909105cc7059031e82951910499",
+      "file": "firmware/heltec-v4/update/meshtastic/meshtastic-267e3fae57713192.bin",
+      "bytes": 2296528,
+      "sha256": "267e3fae577131920b41e43f28a02cfb14bb8592f5a934178a1e20ad6219287d",
       "manifest": "firmware/heltec-v4/update/meshtastic/manifest.json",
-      "version": "2.8.2.090ab6a",
-      "commit": "95ff510f476e238f60c96d0debb355b2fba69449",
-      "espAppVersion": "v2.7.23.b246bcd-1213-g090ab6a44",
+      "version": "2.8.2.9a412fc",
+      "commit": "eaba8b95bebab04c4f13a27b63e000ebdc1e5fac",
+      "espAppVersion": "v2.7.23.b246bcd-1216-g9a412fceb",
       "offset": "0x3a0000",
       "slotSize": "0x300000"
     }
   },
-  "approval": "owner-authorized-heltec-v4-dualboot-ota-publication-20261010;owner-authorized-v4-loader-usb-identity-20261010;owner-authorized-v4-usb-layout-guard-20261010;owner-authorized-v4-ui45c-t147-parity-and-publication-20261010;owner-authorized-20261011-v4-and-t147-dualboot-ota-round-publication;owner-authorized-20261017-app-round;owner-authorized-20261024-app-round"
+  "approval": "owner-authorized-heltec-v4-dualboot-ota-publication-20261010;owner-authorized-v4-loader-usb-identity-20261010;owner-authorized-v4-usb-layout-guard-20261010;owner-authorized-v4-ui45c-t147-parity-and-publication-20261010;owner-authorized-20261011-v4-and-t147-dualboot-ota-round-publication;owner-authorized-20261017-app-round;owner-authorized-20261024-app-round;owner-authorized-20261028-app-round"
 }

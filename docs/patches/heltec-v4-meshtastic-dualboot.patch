@@ -1,6 +1,6 @@
 diff --git a/partitions.csv b/partitions.csv
 new file mode 100644
-index 0000000000..390ae5c820
+index 000000000..390ae5c82
 --- /dev/null
 +++ b/partitions.csv
 @@ -0,0 +1,7 @@
@@ -12,7 +12,7 @@ index 0000000000..390ae5c820
 +tastic_fs,   data, spiffs,  0xb50000, 0x4b0000,
 +
 diff --git a/src/FSCommon.h b/src/FSCommon.h
-index de4322579e..2422155fc3 100644
+index de4322579..2422155fc 100644
 --- a/src/FSCommon.h
 +++ b/src/FSCommon.h
 @@ -35,7 +35,11 @@ using namespace STM32_LittleFS_Namespace;
@@ -36,7 +36,7 @@ index de4322579e..2422155fc3 100644
 +#endif
 diff --git a/src/platform/esp32/OTAValidation.cpp b/src/platform/esp32/OTAValidation.cpp
 new file mode 100644
-index 0000000000..45c9f8bb4e
+index 000000000..45c9f8bb4
 --- /dev/null
 +++ b/src/platform/esp32/OTAValidation.cpp
 @@ -0,0 +1,9 @@
@@ -50,7 +50,7 @@ index 0000000000..45c9f8bb4e
 +}
 +#endif
 diff --git a/variants/esp32s3/heltec_v4/platformio.ini b/variants/esp32s3/heltec_v4/platformio.ini
-index c0e231903e..628bda51db 100644
+index c0e231903..628bda51d 100644
 --- a/variants/esp32s3/heltec_v4/platformio.ini
 +++ b/variants/esp32s3/heltec_v4/platformio.ini
 @@ -24,8 +24,10 @@ custom_meshtastic_has_mui = true
