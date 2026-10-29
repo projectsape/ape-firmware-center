@@ -1,15 +1,15 @@
 {
   "schema_version": 3,
-  "version": "2.8.2.add99ff",
-  "app_version": "2.8.2.add99ff",
-  "commit": "eaba8b95bebab04c4f13a27b63e000ebdc1e5fac",
+  "version": "2.8.2.3593f31",
+  "app_version": "2.8.2.3593f31",
+  "commit": "332b5b0a2c4fec2896de3c5fa63f46d5cd05ea98",
   "health_protocol": 0,
   "board": "waveshare-esp32-s3-touch-lcd-1.47-lora-dualboot",
   "component": "meshtastic",
   "layout": "ape-t147-dualboot-ota-v2",
-  "size": 3762720,
-  "sha256": "9d41bde423e09eb3376b8cfef64d9f1b14705fd282f50b7fe7dce637781bda52",
-  "firmware_url": "meshtastic-9d41bde423e09eb3.bin",
+  "size": 3763056,
+  "sha256": "3e46c109bdf2b038c3b5b0d5167cb996fcb6a8ff0d6bf6b9a2d6b52b029719e2",
+  "firmware_url": "meshtastic-3e46c109bdf2b038.bin",
   "notes": "USB=OTA; same bytes as factory and USB; dualboot layout unchanged.",
-  "signature": "MEYCIQCkmOvp1hK+JPIiSUZtP51H393W+FXn4YutF6/8P5G7mAIhAJ8DTLrmjBPphO2PasMKIPG4D+6rAxogj6lYqRQ2KvtQ"
+  "signature": "MEUCIQCBrR8LXFouFzviW0Ef10pfKTpBNTvp+L4PdUjYsba96AIgfDYDXTPegsLcurvxYQc6EDkCDp3EDpsncGho+b+tzGw="
 }

@@ -16,9 +16,9 @@
     "acceptedOn": "2026-10-07"
   },
   "factory": {
-    "file": "firmware/t147-dualboot/factory/APE-T147-LoRa-DualBoot-OTA-20261028-bcb7d4dac3c3de8b.factory.bin",
+    "file": "firmware/t147-dualboot/factory/APE-T147-LoRa-DualBoot-OTA-20261029-fa417ba67257efb8.factory.bin",
     "bytes": 16777216,
-    "sha256": "bcb7d4dac3c3de8b9822027efbd1d7cb47420e12d045a839ced2a6542b137251"
+    "sha256": "fa417ba67257efb87a37c086a3f79c4fb6182241160790dc9ea08244928cd476"
   },
   "partitionTable": {
     "file": "firmware/t147-dualboot/update/partitions-ota-v2.bin",
@@ -34,29 +34,29 @@
   },
   "components": {
     "wadamesh": {
-      "file": "firmware/t147-dualboot/update/wadamesh/wadamesh-9b2e7fe72a828d3e.bin",
-      "bytes": 3480624,
-      "sha256": "9b2e7fe72a828d3ef2f126bdebc488865ec2d1811ac4424c404a8bcef7081b43",
+      "file": "firmware/t147-dualboot/update/wadamesh/wadamesh-37f5858e51066d22.bin",
+      "bytes": 3489456,
+      "sha256": "37f5858e51066d2266d2889cde6b50f5a60129acac2fcae882bfa7d7ffb5d5f5",
       "manifest": "firmware/t147-dualboot/update/wadamesh/manifest.json",
       "version": "v1.18.0.1-touch",
-      "commit": "0fc1363c61e30c59b8dc4acb7acf4fcb680da56f",
+      "commit": "26578cdc87896c78d533c00568846ecdd7dcfb2b",
       "espAppVersion": "esp-idf: v4.4.7 38eeba213a",
       "offset": "0x1a0000",
       "slotSize": "0x380000"
     },
     "meshtastic": {
-      "file": "firmware/t147-dualboot/update/meshtastic/meshtastic-9d41bde423e09eb3.bin",
-      "bytes": 3762720,
-      "sha256": "9d41bde423e09eb3376b8cfef64d9f1b14705fd282f50b7fe7dce637781bda52",
+      "file": "firmware/t147-dualboot/update/meshtastic/meshtastic-3e46c109bdf2b038.bin",
+      "bytes": 3763056,
+      "sha256": "3e46c109bdf2b038c3b5b0d5167cb996fcb6a8ff0d6bf6b9a2d6b52b029719e2",
       "manifest": "firmware/t147-dualboot/update/meshtastic/manifest.json",
-      "version": "2.8.2.add99ff",
-      "commit": "eaba8b95bebab04c4f13a27b63e000ebdc1e5fac",
-      "espAppVersion": "v2.8.0.47db0e3-307-gadd99ff5e",
+      "version": "2.8.2.3593f31",
+      "commit": "332b5b0a2c4fec2896de3c5fa63f46d5cd05ea98",
+      "espAppVersion": "v2.8.0.47db0e3-308-g3593f3158-d",
       "offset": "0x520000",
       "slotSize": "0x400000"
     }
   },
-  "approval": "owner-authorized-wadamesh-v1.17.4-touch-publication-20261004;owner-authorized-loader-usb-identity-20261004;owner-authorized-stamped-adoption-test-20261004;owner-accepted-and-authorized-loader-auto-check-publication-20261007;owner-authorized-wadamesh-beta90-publication-20261009;owner-authorized-20261011-v4-and-t147-dualboot-ota-round-publication;owner-authorized-20261017-app-round;owner-authorized-20261024-app-round;owner-authorized-20261028-app-round",
+  "approval": "owner-authorized-wadamesh-v1.17.4-touch-publication-20261004;owner-authorized-loader-usb-identity-20261004;owner-authorized-stamped-adoption-test-20261004;owner-accepted-and-authorized-loader-auto-check-publication-20261007;owner-authorized-wadamesh-beta90-publication-20261009;owner-authorized-20261011-v4-and-t147-dualboot-ota-round-publication;owner-authorized-20261017-app-round;owner-authorized-20261024-app-round;owner-authorized-20261028-app-round;owner-authorized-20261029-gps-beta101-round",
   "partitions": {
     "nvs": {
       "type": 1,

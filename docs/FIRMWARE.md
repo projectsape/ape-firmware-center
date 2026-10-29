@@ -11,22 +11,25 @@ is still awaiting that pass.
 
 ## Waveshare T147 LoRa DualBoot — WadaMesh + Meshtastic + OTA
 
-Release: **2026-10-28** · catalog channel: **candidate**.
-WadaMesh `v1.18.0.1-touch` (`beta_100`); Meshtastic `2.8.2.add99ff`; Loader `Legacy-20261007`.
+Release: **2026-10-29** · catalog channel: **candidate**.
+WadaMesh `v1.18.0.1-touch` (`beta_101`); Meshtastic `2.8.2.3593f31`; Loader `Legacy-20261007`.
 
 | Artifact | Slot | Bytes | SHA-256 |
 | --- | --- | ---: | --- |
-| `wadamesh-9b2e7fe72a828d3e.bin` | `0x1a0000` | 3480624 | `9b2e7fe72a828d3ef2f126bdebc488865ec2d1811ac4424c404a8bcef7081b43` |
-| `meshtastic-9d41bde423e09eb3.bin` | `0x520000` | 3762720 | `9d41bde423e09eb3376b8cfef64d9f1b14705fd282f50b7fe7dce637781bda52` |
+| `wadamesh-37f5858e51066d22.bin` | `0x1a0000` | 3489456 | `37f5858e51066d2266d2889cde6b50f5a60129acac2fcae882bfa7d7ffb5d5f5` |
+| `meshtastic-3e46c109bdf2b038.bin` | `0x520000` | 3763056 | `3e46c109bdf2b038c3b5b0d5167cb996fcb6a8ff0d6bf6b9a2d6b52b029719e2` |
 | `partitions-ota-v2.bin` | `0x8000` | 4096 | `c7e60fcb1a19ecb84df674a908c8e48744e3f5fb8a81fa19fb4f341b07db4cfa` |
 | `loader-3b44fb49fe56adf2.bin` | `0x20000` | 1289104 | `3b44fb49fe56adf2e237ce232eb261dd1a5988d970ff8c9a7e26bd6a04051e61` |
-| `APE-T147-LoRa-DualBoot-OTA-20261028-bcb7d4dac3c3de8b.factory.bin` | `0x0` | 16777216 | `bcb7d4dac3c3de8b9822027efbd1d7cb47420e12d045a839ced2a6542b137251` |
+| `APE-T147-LoRa-DualBoot-OTA-20261029-fa417ba67257efb8.factory.bin` | `0x0` | 16777216 | `fa417ba67257efb87a37c086a3f79c4fb6182241160790dc9ea08244928cd476` |
 
 - USB Update writes WadaMesh and Meshtastic. The loader is unchanged.
 - Layout `ape-t147-dualboot-ota-v2`; the installed partition sector is checked before each USB update.
 - The signed Wi-Fi OTA feed remains available from the loader menu.
   Feed: `https://projectsape.github.io/ape-firmware-center/firmware/t147-dualboot/update`
   — one operation at a time, manual Test and Confirm.
+
+
+External GPS defaults: enabled in both apps, ESP32 RX44/TX43 at 9600 baud. Includes Meshtastic generic NMEA detection. Updates preserve saved settings.
 
 ## Waveshare T147 NoLoRa — Meshtastic
 
