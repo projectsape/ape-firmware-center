@@ -102,6 +102,35 @@ class SourcePrivacyTests(unittest.TestCase):
     def test_expected_public_binary_tree_passes(self):
         privacy.validate_site(privacy.ROOT / 'public')
 
+    def test_default_site_fingerprint_budget_covers_retained_release_history(self):
+        root = privacy.ROOT / 'public'
+        scan_bytes = sum(
+            path.stat().st_size for path in root.rglob('*')
+            if path.is_file() and (
+                path.stat().st_size <= privacy.MAX_FINGERPRINT_FILE_BYTES
+                or privacy._is_native_source(path.name)
+            )
+        )
+        self.assertLessEqual(scan_bytes, privacy.MAX_SITE_FINGERPRINT_BYTES)
+        self.assertLessEqual(privacy.MAX_SITE_FINGERPRINT_BYTES, 768 * 1024 * 1024)
+
+    def test_cumulative_fingerprint_budget_still_rejects_one_byte_over_limit(self):
+        (self.root / 'firmware/a.bin').write_bytes(b'public-a\n')
+        (self.root / 'firmware/b.bin').write_bytes(b'public-b\n')
+        total = sum(path.stat().st_size for path in self.root.rglob('*') if path.is_file())
+        with mock.patch.object(privacy, 'MAX_SITE_FINGERPRINT_BYTES', total):
+            privacy.validate_site(self.root)
+        with mock.patch.object(privacy, 'MAX_SITE_FINGERPRINT_BYTES', total - 1):
+            with self.assertRaisesRegex(privacy.PrivacyViolation, 'cumulative raw fingerprint scan limit'):
+                privacy.validate_site(self.root)
+
+    def test_private_digest_is_rejected_with_larger_site_budget(self):
+        payload = b'synthetic private fingerprint budget regression\n'
+        (self.root / 'firmware/a.bin').write_bytes(payload)
+        with mock.patch.object(privacy, 'PRIVATE_SOURCE_FINGERPRINTS', {hashlib.sha256(payload).hexdigest()}):
+            with self.assertRaisesRegex(privacy.PrivacyViolation, 'fingerprint'):
+                privacy.validate_site(self.root)
+
     def test_allowed_app_source_archives_are_not_false_positives(self):
         # Test the generic privacy scanner in isolation using synthetic fixtures.
         # The separate binary-distribution gate forbids all archives on the site.
