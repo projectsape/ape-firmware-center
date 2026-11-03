@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-29",
+ "generatedAt": "2026-11-02",
  "devices": [
   {
    "id": "heltec-v3",
@@ -87,9 +87,9 @@
    "chipFamily": "ESP32-S3",
    "flashSize": "16MB",
    "psramSize": "2MB QUAD/QSPI",
-   "version": "2.8.2.9a412fc",
+   "version": "2.8.2.f55f988",
    "channel": "candidate",
-   "releaseDate": "2026-10-28",
+   "releaseDate": "2026-11-02",
    "image": "assets/boards/heltec-v4.webp",
    "requiresExternalRadio": false,
    "wiring": null,
@@ -104,9 +104,9 @@
     "parts": [
      {
       "name": "factory",
-      "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261028-b5700f3388ec5e8d.factory.bin",
+      "file": "firmware/heltec-v4/factory/APE-Heltec-V4-DualBoot-OTA-20261102-9bb20974408a6c5c.factory.bin",
       "offset": "0x0",
-      "sha256": "b5700f3388ec5e8d017085bba7bf7d5dc51382ddc7e310d4107fa4227559a4c9"
+      "sha256": "9bb20974408a6c5ce54c86fc97dbfadd0472848951f8f076813e611b7e685c3e"
      }
     ]
    },
@@ -123,14 +123,14 @@
     "parts": [
      {
       "name": "meshcore",
-      "file": "firmware/heltec-v4/update/meshcore/meshcore-3f1e12d19e693dc0.bin",
-      "sha256": "3f1e12d19e693dc05ab272427cb26e2baada9705bfe3d34ecb20f9f2bc93124a",
+      "file": "firmware/heltec-v4/update/meshcore/meshcore-60a08ffb7f01b22f.bin",
+      "sha256": "60a08ffb7f01b22f29e445b21a75f9ef3e19263d71945402a13c2da30781c22a",
       "offset": "0x1a0000"
      },
      {
       "name": "meshtastic",
-      "file": "firmware/heltec-v4/update/meshtastic/meshtastic-267e3fae57713192.bin",
-      "sha256": "267e3fae577131920b41e43f28a02cfb14bb8592f5a934178a1e20ad6219287d",
+      "file": "firmware/heltec-v4/update/meshtastic/meshtastic-f72ce5b298607085.bin",
+      "sha256": "f72ce5b298607085f908c95e675f1617e0d5d32cadd8ebb62481354b9d980906",
       "offset": "0x3a0000"
      }
     ],
@@ -145,8 +145,8 @@
      "source": "https://github.com/meshcore-dev/MeshCore"
     },
     "meshtastic": {
-     "version": "2.8.2.9a412fc",
-     "commit": "eaba8b95bebab04c4f13a27b63e000ebdc1e5fac",
+     "version": "2.8.2.f55f988",
+     "commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
      "source": "https://github.com/meshtastic/firmware"
     },
     "loader": {
@@ -193,9 +193,9 @@
    "flashSize": "16MB",
    "psramSize": "8MB",
    "display": "1.47-inch 172\u00d7320 capacitive touch LCD",
-   "version": "2.8.2.3593f31",
+   "version": "2.8.2.d001d1d",
    "channel": "candidate",
-   "releaseDate": "2026-10-29",
+   "releaseDate": "2026-11-02",
    "image": "assets/boards/t147.webp",
    "requiresExternalRadio": true,
    "wiring": {
@@ -255,8 +255,8 @@
     "eraseAll": true,
     "parts": [
      {
-      "file": "firmware/t147-dualboot/factory/APE-T147-LoRa-DualBoot-OTA-20261029-fa417ba67257efb8.factory.bin",
-      "sha256": "fa417ba67257efb87a37c086a3f79c4fb6182241160790dc9ea08244928cd476",
+      "file": "firmware/t147-dualboot/factory/APE-T147-LoRa-DualBoot-OTA-20261102-c4143dfc1fd65aab.factory.bin",
+      "sha256": "c4143dfc1fd65aabea93a8a941a7df997fcbdb76053347b670143595b9a17990",
       "name": "factory",
       "offset": "0x0"
      }
@@ -275,14 +275,14 @@
     "parts": [
      {
       "name": "wadamesh",
-      "file": "firmware/t147-dualboot/update/wadamesh/wadamesh-37f5858e51066d22.bin",
-      "sha256": "37f5858e51066d2266d2889cde6b50f5a60129acac2fcae882bfa7d7ffb5d5f5",
+      "file": "firmware/t147-dualboot/update/wadamesh/wadamesh-d3afeef2c8bc7120.bin",
+      "sha256": "d3afeef2c8bc7120e2b508a8e959d792478e90e956237d90665f7aff0c56379c",
       "offset": "0x1a0000"
      },
      {
       "name": "meshtastic",
-      "file": "firmware/t147-dualboot/update/meshtastic/meshtastic-3e46c109bdf2b038.bin",
-      "sha256": "3e46c109bdf2b038c3b5b0d5167cb996fcb6a8ff0d6bf6b9a2d6b52b029719e2",
+      "file": "firmware/t147-dualboot/update/meshtastic/meshtastic-d4ab97c6d34cd089.bin",
+      "sha256": "d4ab97c6d34cd0897455f1dd230450faf5130a4e2197000e7f808910b4857bc7",
       "offset": "0x520000"
      }
     ],
@@ -291,12 +291,12 @@
    "provenance": {
     "wadamesh": {
      "version": "v1.18.0.1-touch",
-     "commit": "26578cdc87896c78d533c00568846ecdd7dcfb2b",
+     "commit": "53d17d0b0f22fc5fe460e13d5ef2e0d3008ca03a",
      "source": "https://github.com/ALLFATHER-BV/wadamesh"
     },
     "meshtastic": {
-     "version": "2.8.2.3593f31",
-     "commit": "332b5b0a2c4fec2896de3c5fa63f46d5cd05ea98",
+     "version": "2.8.2.d001d1d",
+     "commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
      "source": "https://github.com/meshtastic/firmware"
     },
     "loader": {

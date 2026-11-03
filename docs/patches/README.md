@@ -9,7 +9,7 @@ from: every other file in those builds is upstream, unmodified.
 | --- | --- | --- |
 | `heltec-v3-meshtastic-dualboot.patch` | [meshtastic/firmware](https://github.com/meshtastic/firmware) | `eaba8b95bebab04c4f13a27b63e000ebdc1e5fac` |
 | `heltec-v3-meshcore-dualboot.patch` | [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore) | `81dbae592ffad40b4212bc0b37e82b38da08f4bc` |
-| `heltec-v4-meshtastic-dualboot.patch` | [meshtastic/firmware](https://github.com/meshtastic/firmware) | `eaba8b95bebab04c4f13a27b63e000ebdc1e5fac` |
+| `heltec-v4-meshtastic-dualboot.patch` | [meshtastic/firmware](https://github.com/meshtastic/firmware) | `4c89b6937cc5073fc71fa825dfcca7c9f18becee` |
 | `heltec-v4-meshcore-dualboot.patch` | [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore) | `81dbae592ffad40b4212bc0b37e82b38da08f4bc` |
 
 What the patches do — and nothing else:

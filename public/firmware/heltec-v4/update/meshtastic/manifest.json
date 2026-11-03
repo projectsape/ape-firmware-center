@@ -1,15 +1,15 @@
 {
   "schema_version": 3,
-  "version": "2.8.2.9a412fc",
-  "app_version": "2.8.2.9a412fc",
-  "commit": "eaba8b95bebab04c4f13a27b63e000ebdc1e5fac",
+  "version": "2.8.2.f55f988",
+  "app_version": "2.8.2.f55f988",
+  "commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
   "health_protocol": 0,
   "board": "heltec-v4-dualboot",
   "component": "meshtastic",
   "layout": "ape-heltec-v4-dualboot-ota-v1",
-  "size": 2296528,
-  "sha256": "267e3fae577131920b41e43f28a02cfb14bb8592f5a934178a1e20ad6219287d",
-  "firmware_url": "meshtastic-267e3fae57713192.bin",
+  "size": 2296720,
+  "sha256": "f72ce5b298607085f908c95e675f1617e0d5d32cadd8ebb62481354b9d980906",
+  "firmware_url": "meshtastic-f72ce5b298607085.bin",
   "notes": "USB=OTA; same bytes as factory and USB; dualboot layout unchanged.",
-  "signature": "MEQCICqQJUqtfbJ+8YZvuI1JsjVYAJQfWa24HjCIdCA9WJcbAiADiiA0+trBy8bTCMpV+CkverHnHzZZQ6jVyIBNDOM6ZA=="
+  "signature": "MEYCIQC9Sw1HKacX5+l/pG3ob6bOfeZTQeN/u5I/cRl7avAU0gIhAODY/Z2TQSKYOhOBsHftlkILabi3V9r5yxQ5NIbapMJc"
 }

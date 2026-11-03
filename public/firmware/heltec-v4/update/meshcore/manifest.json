@@ -7,9 +7,9 @@
   "board": "heltec-v4-dualboot",
   "component": "meshcore",
   "layout": "ape-heltec-v4-dualboot-ota-v1",
-  "size": 1665872,
-  "sha256": "3f1e12d19e693dc05ab272427cb26e2baada9705bfe3d34ecb20f9f2bc93124a",
-  "firmware_url": "meshcore-3f1e12d19e693dc0.bin",
+  "size": 1666736,
+  "sha256": "60a08ffb7f01b22f29e445b21a75f9ef3e19263d71945402a13c2da30781c22a",
+  "firmware_url": "meshcore-60a08ffb7f01b22f.bin",
   "notes": "USB=OTA; same bytes as factory and USB; dualboot layout unchanged.",
-  "signature": "MEUCIDQbMNcXZGte0Oo9msKM9J2LFhoKeiadbpyc+s2PBB22AiEAhyOH77jT/3svvkbbjQE6pyW9Qn2RMRb6pLGKGwOpoos="
+  "signature": "MEYCIQD6xEHke0NDF3lRY21dTVnMGAK3a+jEP5XHiG57k87bJQIhAJPF08iwGuCC7EqovfnDMsZfbuvQaBAfYASgA7U0TaD0"
 }
